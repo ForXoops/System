@@ -1,0 +1,122 @@
+/* Cpadmin Style */
+
+.x_toolbar {
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.x_tool {
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 15px 0;
+    height: 110px !important;
+    width: 110px !important;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #E6E9ED;
+}
+.x_toolicon {
+    vertical-align: middle;
+    font-size: 24px;
+    color: #000;
+}
+.x_tooltext {
+    font-size: 13px; 
+    color: #000;
+}
+
+.hoverable {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-transition: all 0.55s ease-in-out;
+    transition: all 0.55s ease-in-out;
+}
+.hoverable:hover {
+    -webkit-box-shadow: 0 8px 17px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    box-shadow: 0 8px 17px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+    -webkit-transition: all 0.55s ease-in-out;
+    transition: all 0.55s ease-in-out;
+}
+
+/* Table */
+.table-head {
+    background-color: #9e9e9e;
+    color: #fff;
+}
+
+
+/* Help */
+.help-view, .help-hide {
+    cursor: help;
+}
+#help-template {
+    width: 100% !important;
+    border: 0 !important;
+    padding: 5px;
+}
+
+/* Messages */
+.errorMsg {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+#xo-content2 {
+    padding-top: 50px;
+}
+
+input[type=submit], input[type=reset], input[type=button], .xo-formbuttons, .formButton, button {
+    background-color: #007bff;
+    color: #fff;
+    padding: .375rem .75rem;
+}
+
+.xo-actions button img, .xo-actions a img, .xo-actions img {
+    padding: 0 !important;
+    margin-right: .25rem!important;
+}
+
+/* Modules */
+#buttontop_mod {
+    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+    margin-bottom: 1rem;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    padding: 0.2rem;
+}
+
+#buttonbar_mod {
+    box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+    margin-bottom: 1rem;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    padding: 0.2rem 0.2rem 0 0.2rem;
+}
+
+/* Table */
+.outer {
+    
+    border: 1px solid #dee2e6;
+    border-collapse: collapse;
+}
+
+#xo-logger-output{
+    padding: 1em !important
+}
+
