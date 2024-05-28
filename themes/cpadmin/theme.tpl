@@ -152,68 +152,68 @@
   <div class="content-wrapper">
     <div class="content-header">
       <{if $xoops_contents}>
-          <div id="xo-content" class="container-fluid">
-            <{*Display Admin menu*}>
-              <{if $xo_system_menu}>
-                  <{$xo_system_menu}>
-                  <{/if}>
-                    <{$xoops_contents}>
+      <div id="xo-content" class="container-fluid">
+        <{*Display Admin menu*}>
+          <{if $xo_system_menu}>
+              <{$xo_system_menu}>
+              <{/if}>
+                <{$xoops_contents}>
+      </div>
+      <{/if}>
+      <{if $dashboard}>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <{include file="$theme_tpl/icons.tpl"}>
           </div>
-        <{/if}>
-          <{if $dashboard}>
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="col">
-                    <{include file="$theme_tpl/icons.tpl"}>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-8 col-md-8">
-                    <{include file="$theme_tpl/tabs.tpl"}>
-                  </div>
-                  <div class="col-4 col-md-4 mb-2">
-                    <{include file="$theme_tpl/overview.tpl"}>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">
-                          <i class="fa fa-cogs mr-1"></i>
-                          <{$smarty.const._CPADMIN_INSTALLEDMODULES}>
-                        </h3>
-                        <div class="card-tools">
+        </div>
+        <div class="row">
+          <div class="col-8 col-md-8">
+            <{include file="$theme_tpl/tabs.tpl"}>
+          </div>
+          <div class="col-4 col-md-4 mb-2">
+            <{include file="$theme_tpl/overview.tpl"}>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fa fa-cogs mr-1"></i>
+                  <{$smarty.const._CPADMIN_INSTALLEDMODULES}>
+                </h3>
+                <div class="card-tools">
 
-                        </div>
-                      </div>
-                      <div class="card-body">
-                        <div class="x_toolbar">
-                          <{foreach item=module from=$modules}>
-                              <{foreach item=mod from=$module.menu}>
-                                  <a href="<{$mod.link}>">
-                                    <div class="x_tool float-left hoverable" data-toggle="tooltip" title="<{$mod.title}>">
-                                      <div class="x_toolicon">
-                                        <i class="fas fa-cog"></i>
-                                      </div>
-                                      <div class="x_tooltext">
-                                        <{$mod.title}>
-                                      </div>
-                                    </div>
-                                  </a>
-                                <{/foreach}>
-                                <{/foreach}>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
+              <div class="card-body">
+                <div class="x_toolbar">
+                  <{foreach item=module from=$modules}>
+                  <{foreach item=mod from=$module.menu}>
+                  <a href="<{$mod.link}>">
+                    <div class="x_tool float-left hoverable" data-toggle="tooltip" title="<{$mod.title}>">
+                      <div class="x_toolicon">
+                        <i class="fas fa-cog"></i>
+                      </div>
+                      <div class="x_tooltext">
+                        <{$mod.title}>
+                      </div>
+                    </div>
+                  </a>
+                  <{/foreach}>
+                  <{/foreach}>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    <{/if}>
-
-      <!--{xo-logger-output}-->
+      <{/if}>
+    </div>
+    <!--{xo-logger-output}-->
   </div>
+  
   <footer class="main-footer">
     <strong>Copyright &copy; <{$smarty.now|date_format:"%Y"}> <a href="https://xoops.org">XOOPS</a>.</strong> All rights
     reserved.
@@ -222,7 +222,8 @@
       <{$xoops_version}>
     </div>
   </footer>
-  </div>
+</div>
+  
 
   <!-- jQuery 
   <script src="<{$theme_url}>/js/jquery/jquery.min.js"></script>-->
