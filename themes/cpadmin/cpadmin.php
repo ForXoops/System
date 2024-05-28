@@ -202,7 +202,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
                             $menu['title']  = trim($modversion['name']);
                             $menu['desc']   = str_replace('<br>', ' ', $modversion['description']);
                             $menu['image']  = $modversion['image'];
-                            $menu['icon']   = $modversion['icon'];
+                            $menu['icon']   = $modversion['icon'] ?? '';
                             $menu['link']   = XOOPS_URL . '/modules/system/admin.php?fct=' . $directory;
                             $menu['status'] = true;
                         }
@@ -213,7 +213,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
                             $menu['title']  = trim($modversion['name']);
                             $menu['desc']   = str_replace('<br>', ' ', $modversion['description']);
                             $menu['image']  = $modversion['image'];
-                            $menu['icon']   = $modversion['icon'];
+                            $menu['icon']   = $modversion['icon'] ?? '';
                             $menu['link']   = XOOPS_URL . '/modules/system/admin.php?fct=' . $directory;
                             $menu['status'] = false;
                         }
