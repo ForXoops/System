@@ -109,6 +109,18 @@ input[type=submit], input[type=reset], input[type=button], .xo-formbuttons, .for
     padding: 0.2rem 0.2rem 0 0.2rem;
 }
 
+div.rmmenuicon a {
+    display: block;
+    float: left;
+    text-align: center;
+    padding: 15px 0;
+    height: 110px !important;
+    width: 110px !important;
+    text-decoration: none;
+    background: #fff;
+    border: 1px solid #E6E9ED;
+}
+
 /* Table */
 .outer {
     
@@ -118,5 +130,10 @@ input[type=submit], input[type=reset], input[type=button], .xo-formbuttons, .for
 
 #xo-logger-output{
     padding: 1em !important
+}
+
+.tooltip {
+    position: inherit;
+    opacity: 1;
 }
 
