@@ -55,7 +55,7 @@
                     </tbody>
                 </table>
             </div>
-            <<{if !empty($nav_menu_banner)}>
+            <{if !empty($nav_menu_banner)}>
             <div class="card-footer">
                 <div class="xo-avatar-pagenav col floatright"><{$nav_menu_banner}></div>
             </div>

@@ -135,5 +135,6 @@ div.rmmenuicon a {
 .tooltip {
     position: inherit;
     opacity: 1;
+    display: inline;
 }
 

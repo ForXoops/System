@@ -9,7 +9,7 @@
         <div class="x_toolbar">
             <{foreach item=preference from=$preferences}>
             <a href="admin.php?fct=preferences&amp;op=show&amp;confcat_id=<{$preference.id}>" title="<{$preference.name}>">
-                <div class="x_tool float-left hoverable mr-1" data-toggle="tooltip" title="<{$preference.name}>">
+                <div class="x_tool float-left hoverable" data-toggle="tooltip" title="<{$preference.name}>">
                     <div class="x_toolicon">
                         <img src="<{$preference.image}>" alt="<{$preference.name}>" width="24px">
                     </div>

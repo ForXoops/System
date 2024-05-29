@@ -76,6 +76,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         $xoTheme->addScript('browse.php?Frameworks/jquery/jquery.js');
 
         $xoTheme->addStylesheet('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback');
+        $xoTheme->addStylesheet(XOOPS_URL . '/modules/system/css/admin.css');
         $xoTheme->addStylesheet(XOOPS_ADMINTHEME_URL . '/cpadmin/css/adminlte.min.css');
         $xoTheme->addStylesheet(XOOPS_ADMINTHEME_URL . '/cpadmin/css/color.css');
         $xoTheme->addStylesheet(XOOPS_ADMINTHEME_URL . '/cpadmin/css/style.css');
@@ -125,6 +126,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
             $rtn        = array();
             $modOptions = array();                                                         //add for sub menus
             $sadmin     = $moduleperm_handler->checkRight('module_admin', $mod->getVar('mid'), $xoopsUser->getGroups());
+
             if ($sadmin) {
                 $info = $mod->getInfo();
                 if (!empty($info['adminindex'])) {
