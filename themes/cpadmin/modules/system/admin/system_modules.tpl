@@ -16,9 +16,7 @@
                 <a class="btn btn-sm btn-secondary" href="admin.php?fct=modulesadmin&amp;op=installlist"
                     title="<{$smarty.const._AM_SYSTEM_MODULES_TOINSTALL}>">
                     <i class="fa fa-plus-circle ic-w mr-1"></i>
-                    <{$smarty.const._AM_SYSTEM_MODULES_TOINSTALL}>&nbsp;<span class="text-red bold">(
-                            <{$toinstall_nb}>)
-                        </span>
+                    <{$smarty.const._AM_SYSTEM_MODULES_TOINSTALL}>&nbsp;<span class="badge badge-light"><{$toinstall_nb}></span>
                 </a>
             </div>
         </div>
