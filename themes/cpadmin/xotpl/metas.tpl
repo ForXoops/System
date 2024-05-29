@@ -15,7 +15,7 @@
 <meta name="copyright" content="<{$xoops_meta_copyright}>"/>
 <meta name="generator" content="XOOPS"/>
 
-<{if $url}>
+<{if isset($url)}>
     <meta http-equiv="Refresh" content="<{$time}>; url=<{$url}>"/>
 <{/if}>
 
