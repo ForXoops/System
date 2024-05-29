@@ -55,12 +55,22 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<{$xoops_avatar}>" class="img-circle elevation-2" alt="User Image">
+		<{if $xoops_name}>
+           <img src="<{$xoops_avatar}>" class="img-circle elevation-2" alt="User Image" title="<{$xoops_name}>">		
+		  <{else}>
+           <img src="<{$xoops_avatar}>" class="img-circle elevation-2" alt="User Image" title="<{$xoops_uname}>">
+		<{/if}>	
         </div>
         <div class="info">
+		<{if $xoops_name}>
+          <a href="<{xoAppUrl 'user.php'}>" class="d-block text-wrap" rel="external">
+            <{$xoops_name}>
+          </a>				
+		  <{else}>
           <a href="<{xoAppUrl 'user.php'}>" class="d-block" rel="external">
             <{$xoops_uname}>
           </a>
+		<{/if}>	
         </div>
       </div>
       <!-- SidebarSearch Form -->
