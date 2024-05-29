@@ -745,7 +745,7 @@ class XoopsFormRendererBootstrap4 implements XoopsFormRendererInterface
                 continue;
             }
 
-            $ret .= '<div class="form-group row">';
+            $ret .= '<div class="form-group row border-bottom pb-2">';
             if (($caption = $element->getCaption()) != '') {
                 $ret .= '<label for="' . $element->getName() . '" class="col-xs-12 col-sm-2 col-form-label text-sm-right">'
                     . $element->getCaption()
