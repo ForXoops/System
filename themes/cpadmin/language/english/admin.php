@@ -7,6 +7,9 @@
 /* Nav icons */
 \define('_CPADMIN_WEBSITE', 'Go to Website');
 \define('_CPADMIN_FULLSCREEN', 'Fullscreen');
+\define('_CPADMIN_VIEWACCOUNT', 'View Account');
+\define('_CPADMIN_EDITACCOUNT', 'Edit Account');
+\define('_CPADMIN_LOGOUT', 'Logout');
 
 /* Quick menu */
 \define('_CPADMIN_NEWS', 'Xoops News');

@@ -2153,7 +2153,7 @@
         this._addNotFound();
       } else {
         endResults.each(function (i, result) {
-          $__default['default'](SELECTOR_SEARCH_RESULTS_GROUP).append(_this2._renderItem(escape(result.name), escape(result.link), result.path));
+          $__default['default'](SELECTOR_SEARCH_RESULTS_GROUP).append(_this2._renderItem(escape(result.name), result.link /* escape(result.link)*/, result.path /*result.path*/ ));
         });
       }
 

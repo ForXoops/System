@@ -34,6 +34,24 @@
           <i class="fas fa-globe-europe"></i>
         </a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="true">
+          <i class="fa fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+          <a href="<{xoAppUrl 'user.php'}>" class="dropdown-item">
+            <i class="fa fa-user-o mr-2"></i> <{$smarty.const._CPADMIN_VIEWACCOUNT}>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="<{xoAppUrl 'edituser.php'}>" class="dropdown-item">
+            <i class="fa fa-pencil mr-2"></i> <{$smarty.const._CPADMIN_EDITACCOUNT}>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="<{xoAppUrl 'user.php?op=logout'}>" class="dropdown-item">
+            <i class="fa fa-sign-out mr-2"></i> <{$smarty.const._CPADMIN_LOGOUT}>
+          </a>
+        </div>
+      </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button" data-toggle="tooltip" title="<{$smarty.const._CPADMIN_FULLSCREEN}>">
           <i class="fas fa-expand-arrows-alt"></i>
