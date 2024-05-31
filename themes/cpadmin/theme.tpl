@@ -133,7 +133,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <{foreach item=pref from=$preferences}>
+            <{foreach item=pref from=$prefs|default:null}>
             <a href="<{xoAppUrl '#'}>" class="nav-link">
               <i class="nav-icon <{$pref.icon}>"></i>
               <p>
@@ -141,7 +141,7 @@
               </p>
             </a> 
             <ul class="nav nav-treeview">
-              <{foreach item=op from=$pref.menu}>
+              <{foreach item=op from=$pref.menu|default:null}>
                   <li class="nav-item">
                     <a href="<{$op.link}>" class="nav-link">
                       <i class="nav-icon <{$op.icon}>"></i>

@@ -356,42 +356,42 @@ class XoopsGuiCpadmin extends XoopsSystemGui
 
         $opt   = array();
         $opt[] = array(
-            'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=1',
+            'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=1',
             'title'    => _CPADMIN_GENERAL,
             'absolute' => 1,
             'icon'     => 'fas fa-cog');
         $opt[] = array(
-            'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=2',
+            'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=2',
             'title'    => _CPADMIN_USERSETTINGS,
             'absolute' => 1,
             'icon'     => 'fas fa-cog');
         $opt[] = array(
-            'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=3',
+            'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=3',
             'title'    => _CPADMIN_METAFOOTER,
             'absolute' => 1,
             'icon'     => 'fas fa-cog');
         $opt[] = array(
-            'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=4',
+            'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=4',
             'title'    => _CPADMIN_CENSOR,
             'absolute' => 1,
             'icon'     => 'fas fa-cog');
         $opt[] = array(
-            'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=5',
+            'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=5',
             'title'    => _CPADMIN_SEARCH,
             'absolute' => 1,
             'icon'     => 'fas fa-cog');
         $opt[] = array(
-            'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=6',
+            'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=6',
             'title'    => _CPADMIN_MAILER,
             'absolute' => 1,
             'icon'     => 'fas fa-cog');
         $opt[] = array(
-            'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=7',
+            'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=7',
             'title'    => _CPADMIN_AUTHENTICATION,
             'absolute' => 1,
             'icon'     => 'fas fa-cog');
         $opt[] = array(
-            'link'     => 'admin.php?fct=preferences&amp;op=showmod&amp;mod=1',
+            'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=showmod&amp;mod=1',
             'title'    => _CPADMIN_MODULESETTINGS,
             'absolute' => 1,
             'icon'     => 'fas fa-cog');
@@ -427,7 +427,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
                 $pref[]          = $rtn;
             }
         }
-        $xoopsTpl->append('preferences', array(
+        $xoopsTpl->append('prefs', array(
             'link' => XOOPS_URL . '/modules/system/admin.php?fct=preferences',
             'text' => _CPADMIN_SITEPREF,
             'icon' => 'fa fa-wrench',
