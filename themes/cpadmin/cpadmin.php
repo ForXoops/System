@@ -110,6 +110,9 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         // Get module list
         $this->getModules();
 
+        // Get preferences
+        $this->getPreferences();
+
         // add MODULES  Menu items
         /* @var XoopsModuleHandler $module_handler */
         $module_handler = xoops_getHandler('module');
@@ -284,7 +287,9 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         unset($dirlist);
     }
 
-
+    /**
+     * Get All modules
+     */
     public function getModules() {
         global $xoopsDB, $xoopsTpl, $xoopsUser, $xoopsModule;
 
@@ -345,7 +350,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
      * Get System and module preferences link
      */
     public function getPreferences(){
-        global $xoopsDB, $xoopsTpl;
+        global $xoopsDB, $xoopsTpl, $xoopsUser;
 
         $pref = array();
 
@@ -354,49 +359,85 @@ class XoopsGuiCpadmin extends XoopsSystemGui
             'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=1',
             'title'    => _CPADMIN_GENERAL,
             'absolute' => 1,
-            'icon'     => XOOPS_ADMINTHEME_URL . '/transition/icons/prefs_small.png');
+            'icon'     => 'fas fa-cog');
         $opt[] = array(
             'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=2',
             'title'    => _CPADMIN_USERSETTINGS,
             'absolute' => 1,
-            'icon'     => XOOPS_ADMINTHEME_URL . '/transition/icons/prefs_small.png');
+            'icon'     => 'fas fa-cog');
         $opt[] = array(
             'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=3',
             'title'    => _CPADMIN_METAFOOTER,
             'absolute' => 1,
-            'icon'     => XOOPS_ADMINTHEME_URL . '/transition/icons/prefs_small.png');
+            'icon'     => 'fas fa-cog');
         $opt[] = array(
             'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=4',
-            'title'    => _OXYGEN_CENSOR,
+            'title'    => _CPADMIN_CENSOR,
             'absolute' => 1,
-            'icon'     => XOOPS_ADMINTHEME_URL . '/transition/icons/prefs_small.png');
+            'icon'     => 'fas fa-cog');
         $opt[] = array(
             'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=5',
-            'title'    => _OXYGEN_SEARCH,
+            'title'    => _CPADMIN_SEARCH,
             'absolute' => 1,
-            'icon'     => XOOPS_ADMINTHEME_URL . '/transition/icons/prefs_small.png');
+            'icon'     => 'fas fa-cog');
         $opt[] = array(
             'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=6',
-            'title'    => _OXYGEN_MAILER,
+            'title'    => _CPADMIN_MAILER,
             'absolute' => 1,
-            'icon'     => XOOPS_ADMINTHEME_URL . '/transition/icons/prefs_small.png');
+            'icon'     => 'fas fa-cog');
         $opt[] = array(
             'link'     => 'admin.php?fct=preferences&amp;op=show&amp;confcat_id=7',
-            'title'    => _OXYGEN_AUTHENTICATION,
+            'title'    => _CPADMIN_AUTHENTICATION,
             'absolute' => 1,
-            'icon'     => XOOPS_ADMINTHEME_URL . '/transition/icons/prefs_small.png');
+            'icon'     => 'fas fa-cog');
         $opt[] = array(
             'link'     => 'admin.php?fct=preferences&amp;op=showmod&amp;mod=1',
-            'title'    => _OXYGEN_MODULESETTINGS,
+            'title'    => _CPADMIN_MODULESETTINGS,
             'absolute' => 1,
-            'icon'     => XOOPS_ADMINTHEME_URL . '/transition/icons/prefs_small.png');
+            'icon'     => 'fas fa-cog');
 
         $pref[] = array(
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences',
-            'title'    => _OXYGEN_SYSOPTIONS,
+            'title'    => _CPADMIN_SYSOPTIONS,
+            'icon'     => 'fas fa-cogs',
             'absolute' => 1,
             'url'      => XOOPS_URL . '/modules/system/',
-            'options'  => $OPT);
+            'options'  => $opt);
+        
+        // add MODULES  Menu items
+        /* @var XoopsModuleHandler $module_handler */
+        $module_handler = xoops_getHandler('module');
+        $criteria       = new CriteriaCompo();
+        $criteria->add(new Criteria('hasadmin', 1));
+        $criteria->add(new Criteria('isactive', 1));
+        $criteria->setSort('mid');
+        $mods = $module_handler->getObjects($criteria);
+
+        /* @var XoopsGroupPermHandler $moduleperm_handler */
+        $moduleperm_handler = xoops_getHandler('groupperm');
+        foreach ($mods as $mod) {
+            $rtn    = array();
+            
+            $sadmin = $moduleperm_handler->checkRight('module_admin', $mod->getVar('mid'), $xoopsUser->getGroups());
+            if ($sadmin && ($mod->getVar('hasnotification') || is_array($mod->getInfo('config')) || is_array($mod->getInfo('comments')))) {
+                $rtn['link']     = XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=showmod&amp;mod=' . $mod->getVar('mid');
+                $rtn['title']    = htmlspecialchars($mod->name(), ENT_QUOTES | ENT_HTML5);
+                $rtn['absolute'] = 1;
+                $rtn['icon']     = 'fas fa-cogs';
+                $pref[]          = $rtn;
+            }
+        }
+        $xoopsTpl->append('preferences', array(
+            'link' => XOOPS_URL . '/modules/system/admin.php?fct=preferences',
+            'text' => _CPADMIN_SITEPREF,
+            'icon' => 'fa fa-wrench',
+            'dir'  => $mod->getVar('dirname', 'n'),
+            'menu' => $pref));
+        /*$xoopsTpl->append('preferences', array(
+            'link' => XOOPS_URL . '/modules/system/admin.php?fct=preferences',
+            'text' => '<span class="fa fa-wrench"></span> ' . _CPADMIN_SITEPREF,
+            //'dir'  => $mod->getVar('dirname', 'n'),
+            'menu' => $pref));*/
     }
 
     /**

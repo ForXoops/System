@@ -94,7 +94,7 @@
       <!-- SidebarSearch Form -->
       <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="<{$smarty.const._CPADMIN_SEARCH}>" aria-label="Search">
+          <input class="form-control form-control-sidebar" type="search" placeholder="<{$smarty.const._CPADMIN_SEARCHMENU}>" aria-label="Search">
           <div class="input-group-append">
             <button class="btn btn-sidebar"><i class="fas fa-search fa-fw"></i></button>
           </div>
@@ -132,7 +132,40 @@
                 <{/foreach}>
             </ul>
           </li>
-          <!-- TODO -->
+          <li class="nav-item">
+            <{foreach item=pref from=$preferences}>
+            <a href="<{xoAppUrl '#'}>" class="nav-link">
+              <i class="nav-icon <{$pref.icon}>"></i>
+              <p>
+                <{$pref.text}><i class="fas fa-angle-left right"></i>
+              </p>
+            </a> 
+            <ul class="nav nav-treeview">
+              <{foreach item=op from=$pref.menu}>
+                  <li class="nav-item">
+                    <a href="<{$op.link}>" class="nav-link">
+                      <i class="nav-icon <{$op.icon}>"></i>
+                      <p>
+                        <{$op.title}><{if !empty($op.options) && $op.options != 0}><i class="fas fa-angle-left right"></i><{/if}>
+                      </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                    <{foreach item=sub from=$op.options|default:null}>
+                      <li class="nav-item">
+                        <a href="<{$sub.link}>" class="nav-link">
+                          <i class="<{$sub.icon}>"></i>
+                          <p>
+                            <{$sub.title}>
+                          </p>
+                        </a>
+                      </li>
+                    <{/foreach}>
+                    </ul>
+                  </li>
+                <{/foreach}>
+            </ul>
+            <{/foreach}>  
+          </li>
           <li class="nav-item">
             <{foreach item=module from=$modules}>
             <li class="nav-item">

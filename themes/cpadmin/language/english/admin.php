@@ -3,6 +3,7 @@
 \define('_CPADMIN_DASHBOARD', 'Dashboard');
 \define('_CPADMIN_CONTROL_PANEL', 'Control Panel');
 \define('_CPADMIN_SYSTEM', 'System');
+\define('_CPADMIN_SYSOPTIONS', 'System Options');
 
 /* Nav icons */
 \define('_CPADMIN_WEBSITE', 'Go to Website');
@@ -13,7 +14,7 @@
 
 /* Quick menu */
 \define('_CPADMIN_NEWS', 'Xoops News');
-\define('_CPADMIN_SEARCH', 'Search');
+\define('_CPADMIN_SEARCHMENU', 'Search');
 
 /* Overview Tabs */
 \define('_CPADMIN_SERVER_OVERWIEW', 'Server Overview');
@@ -34,8 +35,14 @@
 
 /* Menu Preferences */
 \define('_CPADMIN_GENERAL', 'General Settings');
+\define('_CPADMIN_SITEPREF', 'Preferences');
 \define('_CPADMIN_USERSETTINGS', 'User Info Settings');
 \define('_CPADMIN_METAFOOTER', 'Meta Tags and Footer');
+\define('_CPADMIN_CENSOR', 'Word Censoring Options');
+\define('_CPADMIN_SEARCH', 'Search Options');
+\define('_CPADMIN_MAILER', 'Email Setup');
+\define('_CPADMIN_AUTHENTICATION', 'Authentication Options');
+\define('_CPADMIN_MODULESETTINGS', 'System Module Settings');
 
 \define('_CPADMIN_HELP_1', 'How can I create content with XOOPS?');
 \define('_CPADMIN_HELP_DESC_1', 'To create content, you must first install a content module, like the <a href="https://github.com/XoopsModules25x/publisher" rel="external">Publisher</a> or the <a href="https://github.com/XoopsModules25x/news" rel="external">News</a> module. To learn more about XOOPS modules <a href="modules/system/help.php?mid=1&page=modulesadmin">click here</a>');
