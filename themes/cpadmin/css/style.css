@@ -39,7 +39,7 @@
 }
 
 /* Table */
-.table-head {
+.table-head, .head {
     background-color: #9e9e9e;
     color: #fff;
 }
