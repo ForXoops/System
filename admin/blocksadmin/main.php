@@ -35,8 +35,8 @@ $sel = [
 
 foreach ($sel as $key => $value) {
     $temp = isset($_SESSION[$key]) ? (int)$_SESSION[$key] : $value;
-    $$key = Request::getInt($key, $temp);
-    $_SESSION[$key] = $$key;
+    ${$key} = Request::getInt($key, $temp);
+    $_SESSION[$key] = ${$key};
 }
 
 $type = Request::getString('type', '');

@@ -363,7 +363,7 @@ abstract class SystemFineUploadHandler
         // Get unique file name for the file, by appending random suffix.
 
         while (file_exists($uploadDirectory . DIRECTORY_SEPARATOR . $unique . $ext)) {
-            $suffix += rand(1, 999);
+            $suffix += random_int(1, 999);
             $unique = $base.'-'.$suffix;
         }
 

@@ -54,3 +54,6 @@
 
 /* Installed modules */
 \define('_CPADMIN_INSTALLEDMODULES', 'Installed Modules');
+
+//2.5.12
+define('_CPADMIN_COMPOSER_PACKAGES', 'Composer Packages');
