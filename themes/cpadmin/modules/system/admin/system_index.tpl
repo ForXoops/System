@@ -17,7 +17,7 @@
 
             <tbody>
             <{foreach item=menuitem from=$menu|default:null}>
-                <{if $menuitem.title}>
+                <{if !empty($menuitem.title)}>
                     <tr class="<{cycle values='even,odd'}>">
                         <td class="bold width15">
                             <a data-toggle="tooltip" href="admin.php?fct=<{$menuitem.file}>" title="<{$smarty.const._AM_SYSTEM_GO}>: <{$menuitem.title}>">
@@ -32,7 +32,7 @@
                                 <img id="loading_<{$menuitem.file}>" src="images/spinner.gif" style="display:none;" alt="<{$smarty.const._AM_SYSTEM_LOADING}>"/>
                                 <img data-toggle="tooltip" id="<{$menuitem.file}>"
                                     onclick="system_setStatus( { op: 'system_activate', type: '<{$menuitem.file}>' }, '<{$menuitem.file}>', 'admin.php' )"
-                                    src="<{if $menuitem.status}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
+                                    src="<{if !empty($menuitem.status)}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
                                     alt="<{$smarty.const._AM_SYSTEM_STATUS}>" title="<{$smarty.const._AM_SYSTEM_STATUS}>"/>
                             <{/if}>
                         </td>

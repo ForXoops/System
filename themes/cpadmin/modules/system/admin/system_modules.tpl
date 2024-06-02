@@ -47,7 +47,7 @@
                     </thead>
                     <tbody>
                         <{foreach item=row from=$install_mods|default:null}>
-                                <{if $row.dirname == 'system'}>
+                                <{if isset($row.dirname) && $row.dirname == 'system'}>
                                         <tr class="text-center mdb-color lighten-5">
                                             <td>
                                                 <div class="row justify-content-center mb-1">
@@ -90,13 +90,13 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <{if $row.warning_update == 1}>
+                                                <{if  isset($row.warning_update) && $row.warning_update == 1}>
                                                         <strong class="text-red">
                                                             <{$row.version}>
                                                         </strong>
                                                     <{else}>
                                                             <{$row.version}>
-                                                                <{$row.module_status}>
+                                                                <{$row.module_status|default:''}>
                                                                 <{/if}>
                                             </td>
                                             <td>
@@ -105,11 +105,11 @@
                                             <td class="xo-modsimages"></td>
                                             <td class="xo-modsimages"></td>
                                             <td class="xo-modsimages">
-                                                <{if $row.isactive == 1}>
+                                                <{if isset($row.isactive) && $row.isactive == 1}>
                                                         <a class=""
                                                             href="<{$xoops_url}>/modules/system/admin.php?fct=modulesadmin&amp;op=update&amp;module=<{$row.dirname}>"
                                                             title="<{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>">
-                                                            <{if $row.warning_update == 1}>
+                                                            <{if isset($row.warning_update) && $row.warning_update == 1}>
                                                                     <img src="<{xoAdminIcons 'messagebox_warning.png'}>"
                                                                         alt="<{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>" />
                                                                 <{else}>
@@ -132,14 +132,14 @@
                                         </tr>
                     </tbody>
                     <tbody class="xo-module">
-                        <{foreach item=row from=$install_mods}>
-                                <{if $row.dirname != 'system' && $row.hasmain}>
+                        <{foreach item=row from=$install_mods|default:null}>
+                                <{if isset($row.dirname) && $row.dirname != 'system' && $row.hasmain}>
                                         <tr id="mod_<{$row.mid}>"
-                                            class="<{if $row.dirname == 'system'}>xo-system <{/if}>txtcenter <{cycle values='odd, even'}>">
+                                            class="<{if isset($row.dirname) && $row.dirname == 'system'}>xo-system <{/if}>txtcenter <{cycle values='odd, even'}>">
                                             <td>
                                                 <div class="row justify-content-center mb-1">
                                                     <div class="col">
-                                                        <{if $row.hasadmin == 1 && $row.isactive == 1}>
+                                                        <{if (isset($row.hasadmin) && $row.hasadmin == 1) && (isset($row.isactive) && $row.isactive == 1)}>
                                                                 <a class="xo-logonormal "
                                                                     href="<{$xoops_url}>/modules/<{$row.dirname}>/<{$row.adminindex}>"
                                                                     title="<{$row.name}>">
@@ -160,7 +160,7 @@
                                                             <div class="input-group">
                                                                 <div class="input-group-prepend">
                                                                     <span class="input-group-text xo-mods">
-                                                                        <{if $row.hasadmin == 1 && $row.isactive == 1}>
+                                                                         <{if (isset($row.hasadmin) && $row.hasadmin == 1) && (isset($row.isactive) && $row.isactive == 1)}>
                                                                                 <a class=""
                                                                                     href="<{$xoops_url}>/modules/<{$row.dirname}>/<{$row.adminindex}>"
                                                                                     title="<{$row.name}>">
@@ -188,7 +188,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <{if $row.warning_update == 1}>
+                                                <{if isset($row.warning_update) && $row.warning_update == 1}>
                                                         <a class=" maxi" style="color:red;"
                                                             href="<{$xoops_url}>/modules/system/admin.php?fct=modulesadmin&amp;op=update&amp;module=<{$row.dirname}>"
                                                             title="<{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>">
@@ -198,7 +198,7 @@
                                                         <{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>
                                                         <{else}>
                                                                 <{$row.version}>
-                                                                    <{$row.module_status}>
+                                                                    <{$row.module_status|default:''}>
                                                                     <{/if}>
                                             </td>
                                             <td>
@@ -209,9 +209,9 @@
                                                     style="display:none;" alt="<{$smarty.const._AM_SYSTEM_LOADING}>" />
                                                 <img class="cursorpointer " id="active<{$row.mid}>"
                                                     onclick="system_setStatus( { fct: 'modulesadmin', op: 'display', mid: <{$row.mid}> }, 'active<{$row.mid}>', 'admin.php' )"
-                                                    src="<{if $row.isactive}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
-                                                    alt="<{if $row.isactive}><{$smarty.const._AM_SYSTEM_MODULES_DEACTIVATE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_ACTIVATE}><{/if}>"
-                                                    title="<{if $row.isactive}><{$smarty.const._AM_SYSTEM_MODULES_DEACTIVATE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_ACTIVATE}><{/if}>" />
+                                                    src="<{if !empty($row.isactive)}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
+                                                    alt="<{if !empty($row.isactive)}><{$smarty.const._AM_SYSTEM_MODULES_DEACTIVATE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_ACTIVATE}><{/if}>"
+                                                    title="<{if !empty($row.isactive)}><{$smarty.const._AM_SYSTEM_MODULES_DEACTIVATE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_ACTIVATE}><{/if}>" />
                                             </td>
                                             <td class="xo-modsimages">
                                                 <img id="loading_menu<{$row.mid}>" src="images/spinner.gif"
@@ -219,16 +219,16 @@
                                                     alt="<{$smarty.const._AM_SYSTEM_LOADING}>" />
                                                 <img class="cursorpointer " id="menu<{$row.mid}>"
                                                     onclick="system_setStatus( { fct: 'modulesadmin', op: 'display_in_menu', mid: <{$row.mid}> }, 'menu<{$row.mid}>', 'admin.php' )"
-                                                    src="<{if $row.weight != 0}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
-                                                    alt="<{if $row.weight != 0}><{$smarty.const._AM_SYSTEM_MODULES_HIDE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_SHOW}><{/if}>"
-                                                    title="<{if $row.weight != 0}><{$smarty.const._AM_SYSTEM_MODULES_HIDE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_SHOW}><{/if}>" />
+                                                    src="<{if isset($row.weight) && $row.weight != 0}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
+                                                    alt="<{if isset($row.weight) && $row.weight != 0}><{$smarty.const._AM_SYSTEM_MODULES_HIDE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_SHOW}><{/if}>"
+                                                    title="<{if isset($row.weight) && $row.weight != 0}><{$smarty.const._AM_SYSTEM_MODULES_HIDE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_SHOW}><{/if}>" />
                                             </td>
                                             <td class="xo-modsimages">
-                                                <{if $row.isactive == 1}>
+                                                <{if isset($row.isactive) && $row.isactive == 1}>
                                                         <a class=""
                                                             href="<{$xoops_url}>/modules/system/admin.php?fct=modulesadmin&amp;op=update&amp;module=<{$row.dirname}>"
                                                             title="<{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>">
-                                                            <{if $row.warning_update == 1}>
+                                                            <{if isset($row.warning_update) && $row.warning_update == 1}>
                                                                     <img src="<{xoAdminIcons 'messagebox_warning.png'}>"
                                                                         alt="<{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>" />
                                                                 <{else}>
@@ -257,8 +257,8 @@
                         <tr class="stylish-color">
                             <td colspan="6"></td>
                         </tr>
-                        <{foreach item=row from=$install_mods}>
-                                <{if $row.dirname != 'system' && !$row.hasmain}>
+                        <{foreach item=row from=$install_mods|default:null}>
+                                <{if (isset($row.dirname) && $row.dirname != 'system') && empty($row.hasmain)}>
                                         <tr class="txtcenter mdb-color lighten-5">
                                             <td>
                                                 <a class="xo-logonormal "
@@ -293,7 +293,7 @@
                                                     </div>
                                             </td>
                                             <td>
-                                                <{if $row.warning_update == 1}>
+                                                <{if isset($row.warning_update) && $row.warning_update == 1}>
                                                         <a class=" maxi" style="color:red;"
                                                             href="<{$xoops_url}>/modules/system/admin.php?fct=modulesadmin&amp;op=update&amp;module=<{$row.dirname}>"
                                                             title="<{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>">
@@ -303,7 +303,7 @@
                                                         <{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>
                                                         <{else}>
                                                                 <{$row.version}>
-                                                                    <{$row.module_status}>
+                                                    <{$row.module_status|default:''}>
                                                                     <{/if}>
                                             </td>
                                             <td>
@@ -315,13 +315,13 @@
                                                     alt="<{$smarty.const._AM_SYSTEM_LOADING}>" /><img class="cursorpointer "
                                                     id="mid<{$row.mid}>"
                                                     onclick="system_setStatus( { fct: 'modulesadmin', op: 'display', mid: <{$row.mid}> }, 'mid<{$row.mid}>', 'admin.php' )"
-                                                    src="<{if $row.isactive}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
-                                                    alt="<{if $row.isactive}><{$smarty.const._AM_SYSTEM_MODULES_DEACTIVATE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_ACTIVATE}><{/if}>"
-                                                    title="<{if $row.isactive}><{$smarty.const._AM_SYSTEM_MODULES_DEACTIVATE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_ACTIVATE}><{/if}>" />
+                                                    src="<{if !empty($row.isactive)}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
+                                                    alt="<{if !empty($row.isactive)}><{$smarty.const._AM_SYSTEM_MODULES_DEACTIVATE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_ACTIVATE}><{/if}>"
+                                                    title="<{if !empty($row.isactive)}><{$smarty.const._AM_SYSTEM_MODULES_DEACTIVATE}><{else}><{$smarty.const._AM_SYSTEM_MODULES_ACTIVATE}><{/if}>" />
                                             </td>
                                             <td class="xo-modsimages"></td>
                                             <td class="xo-modsimages">
-                                                <{if $row.isactive == 1}>
+                                                <{if isset($row.isactive) && $row.isactive == 1}>
                                                         <a class=""
                                                             href="<{$xoops_url}>/modules/system/admin.php?fct=modulesadmin&amp;op=update&amp;module=<{$row.dirname}>"
                                                             title="<{$smarty.const._AM_SYSTEM_MODULES_UPDATE}>">
@@ -358,14 +358,14 @@
                         </tr>
                     </tfoot>
                 </table>
-                <{php}>echo $GLOBALS['xoopsSecurity']->getTokenHTML();<{/php}>
+                <{securityToken}>
             </form>
         </div>
     </div>
 
 <{/if}>
 
-    <{if $toinstall_mods}>
+    <{if !empty($toinstall_mods)}>
             <div class="card">
                 <div class="card-header">
                     <img class="cursorpointer" onclick="system_moduleLargeView();"
@@ -391,7 +391,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <{foreach item=row from=$toinstall_mods}>
+                            <{foreach item=row from=$toinstall_mods|default:null}>
                                     <tr class="text-center">
                                         <td>
                                             <img class="xo-logonormal"
@@ -399,7 +399,7 @@
                                                 alt="<{$row.name}>" title="<{$row.name}>" />
 
                                             <div class="xo-modsimages">
-                                                <{if $row.hasadmin == 1 && $row.isactive == 1}>
+                                                <{if (isset($row.hasadmin) && $row.hasadmin == 1) && $row.isactive == 1}>
                                                         <a class="tooltip"
                                                             href="<{$xoops_url}>/modules/<{$row.dirname}>/<{$row.adminindex}>"
                                                             title="<{$row.name}>">
@@ -419,7 +419,7 @@
                                         </td>
                                         <td>
                                             <{$row.version}>
-                                                <{$row.module_status}>
+                                            <{$row.module_status|default:''}>
                                         </td>
                                         <td class="xo-modsimages">
                                             <a class="" data-toggle="tooltip"
@@ -440,7 +440,7 @@
             </div>
         <{/if}>
             <!--Pop-pup-->
-            <{foreach item=row from=$mods_popup}>
+            <{foreach item=row from=$mods_popup|default:null}>
                     <div class="modal fade" id="modal-<{$row.mid}>" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
@@ -465,7 +465,7 @@
                                                     <li><span class="bold">
                                                             <{$smarty.const._VERSION}>
                                                         </span>&nbsp;:&nbsp;<{$row.version}>
-                                                            <{$row.module_status}>
+                                                            <{$row.module_status|default:''}>
                                                     </li>
                                                     <li><span class="bold">
                                                             <{$smarty.const._AUTHOR}>

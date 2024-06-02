@@ -87,7 +87,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         // ADD MENU *****************************************
 
         //Add  CONTROL PANEL  Menu  items
-        $menu                = array();
+        $menu                = [];
         $menu[0]['link']     = XOOPS_URL;
         $menu[0]['title']    = "<span class='fa fa-home'></span> " . _YOURHOME;
         $menu[0]['absolute'] = 1;
@@ -99,7 +99,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         $menu[2]['title']    = "<span class='fa fa-sign-out'></span> " . _LOGOUT;
         $menu[2]['absolute'] = 1;
         $menu[2]['icon']     = XOOPS_ADMINTHEME_URL . '/transition/images/logout.png';
-        $tpl->append('navitems', array('link' => XOOPS_URL . '/admin.php', 'text' => '<span class="fa fa-cog"></span> ' . _CPADMIN_DASHBOARD, 'menu' => $menu));
+        $tpl->append('navitems', ['link' => XOOPS_URL . '/admin.php', 'text' => '<span class="fa fa-cog"></span> ' . _CPADMIN_DASHBOARD, 'menu' => $menu]);
 
         // Add server configuration
         $this->getServerConfig();
@@ -122,12 +122,12 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         $criteria->setSort('mid');
         $mods = $module_handler->getObjects($criteria);
 
-        $menu               = array();
+        $menu               = [];
         /* @var XoopsGroupPermHandler $moduleperm_handler */
         $moduleperm_handler = xoops_getHandler('groupperm');
         foreach ($mods as $mod) {
-            $rtn        = array();
-            $modOptions = array();                                                         //add for sub menus
+            $rtn        = [];
+            $modOptions = [];                                                         //add for sub menus
             $sadmin     = $moduleperm_handler->checkRight('module_admin', $mod->getVar('mid'), $xoopsUser->getGroups());
 
             if ($sadmin) {
@@ -149,17 +149,17 @@ class XoopsGuiCpadmin extends XoopsSystemGui
                 $menu[] = $rtn;
             }
         }
-        $tpl->append('navitems', array(
+        $tpl->append('navitems', [
             'link' => XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin',
             'text' => '<span class="fa fa-puzzle-piece"></span> ' . _AM_SYSTEM_MODULES,
             'dir'  => $mod->getVar('dirname', 'n'),
-            'menu' => $menu));
+            'menu' => $menu]);
         
         //add OPTIONS/links for local support
         if (file_exists($file = XOOPS_ADMINTHEME_PATH . '/transition/language/' . $xoopsConfig['language'] . '/localsupport.php')) {
             $links = include XOOPS_ADMINTHEME_PATH . '/transition/language/' . $xoopsConfig['language'] . '/localsupport.php';
             if (count($links) > 0) {
-                $tpl->append('navitems', array('link' => XOOPS_URL . '/admin.php', 'text' => '<span class="fa fa-link"></span> ' . _OXYGEN_LOCALSUPPORT, 'menu' => $links));
+                $tpl->append('navitems', ['link' => XOOPS_URL . '/admin.php', 'text' => '<span class="fa fa-link"></span> ' . _OXYGEN_LOCALSUPPORT, 'menu' => $links]);
             }
         }
 
@@ -194,7 +194,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
 
         $admin_dir        = XOOPS_ROOT_PATH . '/modules/system/admin';
         $dirlist          = XoopsLists::getDirListAsArray($admin_dir);
-        $inactive_section = array('blocksadmin', 'groups', 'modulesadmin', 'preferences', 'tplsets');
+        $inactive_section = ['blocksadmin', 'groups', 'modulesadmin', 'preferences', 'tplsets'];
         foreach ($dirlist as $directory) {
             if (file_exists($admin_dir . '/' . $directory . '/xoops_version.php')) {
                 require $admin_dir . '/' . $directory . '/xoops_version.php';
@@ -302,12 +302,12 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         $criteria->setSort('mid');
         $mods = $module_handler->getObjects($criteria);
 
-        $menu               = array();
+        $menu               = [];
         /* @var XoopsGroupPermHandler $moduleperm_handler */
         $moduleperm_handler = xoops_getHandler('groupperm');
         foreach ($mods as $mod) {
-            $rtn        = array();
-            $modOptions = array();                                                         //add for sub menus
+            $rtn        = [];
+            $modOptions = [];                                                         //add for sub menus
             $sadmin     = $moduleperm_handler->checkRight('module_admin', $mod->getVar('mid'), $xoopsUser->getGroups());
             if ($sadmin) {
                 $info = $mod->getInfo();
@@ -338,12 +338,12 @@ class XoopsGuiCpadmin extends XoopsSystemGui
             $xoopsTpl->assign('dashboard', false);
         }
 
-        $xoopsTpl->append('modules', array(
+        $xoopsTpl->append('modules', [
             'link' => XOOPS_URL . '/modules/system/admin.php?fct=modulesadmin',
             'text' => _AM_SYSTEM_MODULES,
             'icon' => 'fa fa-puzzle-piece',
             'dir'  => $mod->getVar('dirname', 'n'),
-            'menu' => $menu));
+            'menu' => $menu]);
     }
 
     /**
@@ -352,57 +352,57 @@ class XoopsGuiCpadmin extends XoopsSystemGui
     public function getPreferences(){
         global $xoopsDB, $xoopsTpl, $xoopsUser;
 
-        $pref = array();
+        $pref = [];
 
-        $opt   = array();
-        $opt[] = array(
+        $opt   = [];
+        $opt[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=1',
             'title'    => _CPADMIN_GENERAL,
             'absolute' => 1,
-            'icon'     => 'fas fa-cog');
-        $opt[] = array(
+            'icon'     => 'fas fa-cog'];
+        $opt[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=2',
             'title'    => _CPADMIN_USERSETTINGS,
             'absolute' => 1,
-            'icon'     => 'fas fa-cog');
-        $opt[] = array(
+            'icon'     => 'fas fa-cog'];
+        $opt[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=3',
             'title'    => _CPADMIN_METAFOOTER,
             'absolute' => 1,
-            'icon'     => 'fas fa-cog');
-        $opt[] = array(
+            'icon'     => 'fas fa-cog'];
+        $opt[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=4',
             'title'    => _CPADMIN_CENSOR,
             'absolute' => 1,
-            'icon'     => 'fas fa-cog');
-        $opt[] = array(
+            'icon'     => 'fas fa-cog'];
+        $opt[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=5',
             'title'    => _CPADMIN_SEARCH,
             'absolute' => 1,
-            'icon'     => 'fas fa-cog');
-        $opt[] = array(
+            'icon'     => 'fas fa-cog'];
+        $opt[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=6',
             'title'    => _CPADMIN_MAILER,
             'absolute' => 1,
-            'icon'     => 'fas fa-cog');
-        $opt[] = array(
+            'icon'     => 'fas fa-cog'];
+        $opt[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=show&amp;confcat_id=7',
             'title'    => _CPADMIN_AUTHENTICATION,
             'absolute' => 1,
-            'icon'     => 'fas fa-cog');
-        $opt[] = array(
+            'icon'     => 'fas fa-cog'];
+        $opt[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences&amp;op=showmod&amp;mod=1',
             'title'    => _CPADMIN_MODULESETTINGS,
             'absolute' => 1,
-            'icon'     => 'fas fa-cog');
+            'icon'     => 'fas fa-cog'];
 
-        $pref[] = array(
+        $pref[] = [
             'link'     => XOOPS_URL . '/modules/system/admin.php?fct=preferences',
             'title'    => _CPADMIN_SYSOPTIONS,
             'icon'     => 'fas fa-cogs',
             'absolute' => 1,
             'url'      => XOOPS_URL . '/modules/system/',
-            'options'  => $opt);
+            'options'  => $opt];
         
         // add MODULES  Menu items
         /* @var XoopsModuleHandler $module_handler */
@@ -416,7 +416,7 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         /* @var XoopsGroupPermHandler $moduleperm_handler */
         $moduleperm_handler = xoops_getHandler('groupperm');
         foreach ($mods as $mod) {
-            $rtn    = array();
+            $rtn    = [];
             
             $sadmin = $moduleperm_handler->checkRight('module_admin', $mod->getVar('mid'), $xoopsUser->getGroups());
             if ($sadmin && ($mod->getVar('hasnotification') || is_array($mod->getInfo('config')) || is_array($mod->getInfo('comments')))) {
@@ -427,12 +427,12 @@ class XoopsGuiCpadmin extends XoopsSystemGui
                 $pref[]          = $rtn;
             }
         }
-        $xoopsTpl->append('prefs', array(
+        $xoopsTpl->append('prefs', [
             'link' => XOOPS_URL . '/modules/system/admin.php?fct=preferences',
             'text' => _CPADMIN_SITEPREF,
             'icon' => 'fa fa-wrench',
             'dir'  => $mod->getVar('dirname', 'n'),
-            'menu' => $pref));
+            'menu' => $pref]);
         /*$xoopsTpl->append('preferences', array(
             'link' => XOOPS_URL . '/modules/system/admin.php?fct=preferences',
             'text' => '<span class="fa fa-wrench"></span> ' . _CPADMIN_SITEPREF,
@@ -446,7 +446,8 @@ class XoopsGuiCpadmin extends XoopsSystemGui
     public function getServerConfig() {
         global $xoopsDB, $xoopsTpl;
 
-        $xoopsTpl->assign('lang_php_vesion', PHP_VERSION);
+        $xoopsTpl->assign('lang_php_version', PHP_VERSION);
+        $xoopsTpl->assign('lang_smarty_version', $xoopsTpl::SMARTY_VERSION);
         $xoopsTpl->assign('lang_mysql_version', mysqli_get_server_info($xoopsDB->conn));
         $xoopsTpl->assign('lang_server_api', PHP_SAPI);
         $xoopsTpl->assign('lang_os_name', PHP_OS);

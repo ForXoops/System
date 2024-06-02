@@ -9,13 +9,13 @@
             <div class="col">
                 <form class="form-inline" action="admin.php?fct=comments" method="post">
                 <select class="browser-default custom-select custom-select-sm mr-1" name="comments_module"> 
-                    <{$comments_module}>
+                    <{$comments_module|default:''}>
                 </select>
                 <select class="browser-default custom-select custom-select-sm mr-1" name="comments_status"> 
-                    <{$comments_status}>
+                    <{$comments_status|default:''}>
                 </select>
                 <select class="browser-default custom-select custom-select-sm mr-1" name="comments_limit"> 
-                    <{$comments_limit}>
+                    <{$comments_limit|default:''}>
                 </select>
                 <input type="hidden" name="fct" value="comments" />
                 <input class="btn btn-sm btn-primary" type="submit" value="<{$smarty.const._GO}>" name="selsubmit" />
@@ -81,7 +81,7 @@
     </div>
     <div class="card-footer">
         <input class="btn btn-sm btn-primary" type='submit' name='<{$smarty.const._DELETE}>' value='<{$smarty.const._DELETE}>'/>
-        <div class="float-right"><{$nav}></div>
+        <div class="float-right"><{$nav|default:''}></div>
     </div>
 </div>
 <{foreach item=comment from=$comments_popup|default:null}>

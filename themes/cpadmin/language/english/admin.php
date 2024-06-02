@@ -23,6 +23,7 @@
 \define('_CPADMIN_VERSION_XOOPS', 'XOOPS Version');
 \define('_CPADMIN_VERSION_PHP', 'PHP Version');
 \define('_CPADMIN_VERSION_MYSQL', 'MySQL Version');
+\define('_CPADMIN_VERSION_SMARTY', 'Smarty Version');
 \define('_CPADMIN_SERVER_API', 'Server API');
 \define('_CPADMIN_OS', 'OS');
 \define('_CPADMIN_ABOUT', 'About XOOPS');

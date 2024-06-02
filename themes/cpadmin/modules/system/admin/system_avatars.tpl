@@ -5,7 +5,7 @@
     IMG_OFF = '<{xoAdminIcons 'cancel.png'}>';
 </script>
 <!-- Buttons -->
-<{if $type == 's'}>
+<{if isset($type) && $type == 's'}>
     <div class="row">
         <div class="col">
             <a id="xo-addavatar-btn" class="btn btn-secondary floatright" href="admin.php?fct=avatars&amp;op=multiupload" data-toggle="tooltip"
@@ -16,7 +16,7 @@
         </div>
     </div>
 <{/if}>
-<{if $view_cat}>
+<{if !empty($view_cat)}>
 <!-- Display Avatar header for switch between system & custom category -->
 <div class="row">
     <div class="col">
@@ -46,8 +46,8 @@
 </div>
 <{/if}>
 <!-- Display Avatar list for each category -->
-<{if $avatars_list}>
-    <{foreach item=avatar from=$avatars_list}>
+<{if !empty($avatars_list)}>
+    <{foreach item=avatar from=$avatars_list|default:null}>
         <div class="floatleft">
             <div class="card xo-thumb txtcenter">
                 <div class="xo-thumbimg">
@@ -59,9 +59,9 @@
                     <img id="loading_avt<{$avatar.avatar_id}>" src="images/spinner.gif" style="display:none;" title="<{$smarty.const._AM_SYSTEM_LOADING}>"
                          alt="<{$smarty.const._AM_SYSTEM_LOADING}>"/><img id="avt<{$avatar.avatar_id}>" data-toggle="tooltip"
                                                                           onclick="system_setStatus( { fct: 'avatars', op: 'display', avatar_id: <{$avatar.avatar_id}> }, 'avt<{$avatar.avatar_id}>', 'admin.php' )"
-                                                                          src="<{if $avatar.avatar_display}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
+                                                                          src="<{if isset($avatar.avatar_display)}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
                                                                           alt="<{$smarty.const._IMGDISPLAY}>" title="<{$smarty.const._IMGDISPLAY}>"/>
-                    <{if $avatar.type == 'c'}>
+                    <{if isset($avatar.type) &&  $avatar.type == 'c'}>
                         <a href="<{$xoops_url}>/modules/profile/userinfo.php?uid=<{$avatar.user}>" title="<{$smarty.const._AM_SYSTEM_AVATAR_USERS}>">
                             <img src="<{xoAdminIcons 'edit.png'}>" alt="<{$smarty.const._AM_SYSTEM_AVATAR_USERS}>"/>
                         </a>
@@ -81,14 +81,14 @@
     <{/foreach}>
     <!-- Display Avatars navigation -->
     <div class="clear">&nbsp;</div>
-    <{if $nav_menu}>
+    <{if !empty($nav_menu)}>
     <div class="row">
         <div class="xo-pagenav col floatright"><{$nav_menu}></div>
     </div>
     <{/if}>
 <{/if}>
 
-<{if $multiupload}>
+<{if !empty($multiupload)}>
     <div class="row">
         <div class="col">
             <a id="xo-addavatar-btn" class="btn btn-secondary floatright" href="admin.php?fct=avatars&amp;op=listavt&amp;type=s" data-toggle="tooltip"
@@ -132,7 +132,7 @@
                 maxHeightImageError: "<{$smarty.const._MAXHEIGHTIMAGEERROR}>",
                 maxWidthImageError: "<{$smarty.const._MAXWIDTHIMAGEERROR}>",
                 minHeightImageError: "<{$smarty.const._MINHEIGHTIMAGEERROR}>",
-                minWidthImageError: "<{$smarty.const.__MINWIDTHIMAGEERROR}>",
+                minWidthImageError: "<{$smarty.const._MINWIDTHIMAGEERROR}>",
                 retryFailTooManyItems: "<{$smarty.const._RETRYFAILTOOMANYITEMS}>",
                 onLeave: "<{$smarty.const._ONLEAVE}>",
                 unsupportedBrowserIos8Safari: "<{$smarty.const._UNSUPPORTEDBROWSERIOS8SAFARI}>"
@@ -168,7 +168,7 @@
 <{/if}>
 
 <!-- Display Avatar form (add,edit) -->
-<{if $form}>
+<{if !empty($form)}>
     <div class="spacer"><{$form}></div>
 <{/if}>
 <!-- Display Avatar images on edit page -->

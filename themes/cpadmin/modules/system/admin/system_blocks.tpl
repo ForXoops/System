@@ -13,7 +13,7 @@
             <{$filterform.extra}> >
             <div class="xo-blocksfilter">
               <{foreach item=element from=$filterform.elements|default:null}>
-              <{if $element.hidden != true}>
+              <{if isset($element.hidden) && $element.hidden != true}>
               <div class="xo-caption"><{$element.caption}></div>
               <div class="xo-element"><{$element.body}></div>
               <{else}>
