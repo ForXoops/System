@@ -27,11 +27,11 @@ $op = Request::getString('op', 'list');
 
 $filter = Request::getInt('filter', 0);
 
-$sel = array(
+$sel = [
     'selmod' => -2,
     'selgen' => -1,
     'selgrp' => -1,
-    'selvis' => -1);
+    'selvis' => -1];
 
 foreach ($sel as $key => $value) {
     $temp = isset($_SESSION[$key]) ? (int)$_SESSION[$key] : $value;
@@ -152,14 +152,14 @@ switch ($op) {
             }
         }
 
-        $arr = array();
+        $arr = [];
 		if (!empty($blocks_arr)){
 			foreach (array_keys($blocks_arr) as $i) {
 				$arr[$i] = $blocks_arr[$i]->toArray();
 				$xoopsTpl->appendByRef('blocks', $arr[$i]);
 			}
 		} else {
-			$xoopsTpl->assign('blocks', array());
+			$xoopsTpl->assign('blocks', []);
 		}
         $block     = $block_handler->create();
         $blockform = $block->getForm();
@@ -255,7 +255,7 @@ switch ($op) {
         $block_handler = xoops_getModuleHandler('block');
         $block         = $block_handler->create();
         $block->setVars($_POST);
-        $content = isset($_POST['content_block']) ? $_POST['content_block'] : '';
+        $content = $_POST['content_block'] ?? '';
         $block->setVar('content', $content);
         $myts = \MyTextSanitizer::getInstance();
         echo '<div id="xo-preview-dialog" title="' . $block->getVar('title', 's') . '">' . $block->getContent('s', $block->getVar('c_type')) . '</div>';
@@ -282,7 +282,7 @@ switch ($op) {
             $type = $block->getVar('block_type');
             $name = $block->getVar('name');
             // Save block options
-            $options = Xmf\Request::getArray('options', array(), 'POST');
+            $options = Xmf\Request::getArray('options', [], 'POST');
             if (!empty($options) && \is_array($options)) {
                 $options_count = count($options);
                 if ($options_count > 0) {
@@ -316,7 +316,7 @@ switch ($op) {
         $block->setVar('name', $name);
         $block->setVar('isactive', 1);
 
-        $content = isset($_POST['content_block']) ? $_POST['content_block'] : '';
+        $content = $_POST['content_block'] ?? '';
         $block->setVar('content', $content);
 
         if (!$newid = $block_handler->insert($block)) {
@@ -427,10 +427,10 @@ switch ($op) {
             // Call Header
             xoops_cp_header();
             // Display Question
-            xoops_confirm(array(
+            xoops_confirm([
                               'op'  => 'delete_ok',
                               'fct' => 'blocksadmin',
-                              'bid' => $block->getVar('bid')), 'admin.php', sprintf(_AM_SYSTEM_BLOCKS_RUSUREDEL, $block->getVar('title')));
+                              'bid' => $block->getVar('bid')], 'admin.php', sprintf(_AM_SYSTEM_BLOCKS_RUSUREDEL, $block->getVar('title')));
             // Call Footer
             xoops_cp_footer();
         }

@@ -47,14 +47,14 @@ class XoopsGuiCpadmin extends XoopsSystemGui
         /*xoops_load('XoopsFormRendererBootstrap4');
         XoopsFormRenderer::getInstance()->set(new XoopsFormRendererBootstrap4());*/
 
-        include_once 'class/XoopsFormRendererBootstrap4.php';
+        include_once __DIR__ . '/class/XoopsFormRendererBootstrap4.php';
         XoopsFormRenderer::getInstance()->set(new XoopsFormRendererBootstrap4());
 
         // Determine if information box must be shown
         $currentScript = str_replace(XOOPS_ROOT_PATH . '/', '', $_SERVER['SCRIPT_FILENAME']);
 
         if('admin.php' == $currentScript){
-            $show = isset($_GET['show']) ? $_GET['show'] : '';
+            $show = $_GET['show'] ?? '';
             if('info' == $show){
                 $tpl->assign('showCpadminInfo', true);
             }

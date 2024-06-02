@@ -16,7 +16,7 @@ define('_OXYGEN_VERSION_MYSQL', 'Version de mySQL');
 define('_OXYGEN_Server_API', 'API du Serveur');
 define('_OXYGEN_OS', 'Système d\'exploitation');
 define('_OXYGEN_ABOUT', 'A propos XOOPS');
-define('_OXYGEN_ABOUT_TEXT', 'Lisez la page <a href="http://www.xoops.org/modules/wfchannel/" rel="external" title="Tout à propos de XOOPS">Tout à propos de XOOPS</a> pour plus de détails.');
+define('_OXYGEN_ABOUT_TEXT', 'Lisez la page <a href="https://www.xoops.org/modules/wfchannel/" rel="external" title="Tout à propos de XOOPS">Tout à propos de XOOPS</a> pour plus de détails.');
 define('_OXYGEN_XOOPS_LINKS', 'Liens de XOOPS');
 define('_OXYGEN_XOOPSPROJECT', 'Projet XOOPS');
 define('_OXYGEN_XOOPSCORE', 'Noyau XOOPS');
@@ -51,4 +51,4 @@ define('_OXYGEN_HELP_DESC_1', 'Pour créer du contenu, vous devez d\'abord insta
 define('_OXYGEN_HELP_2', 'Qu\'est-ce que le système de Blocs ?');
 define('_OXYGEN_HELP_DESC_2', 'Les blocs peuvent fournir du contenu supplémentaire / spécifique à partir des modules installés. Il peut y avoir des blocs personnalisés qui peuvent contenir du texte, du code JS, du texte au format HTML, des images, etc. Le contenu de ces blocs peut être formaté individuellement ou peut hériter du formatage du site Web. (<a href="modules/system/help.php?mid=1&page=blocksadmin">plus ...</a>)');
 define('_OXYGEN_HELP_3', 'Comment trouver plus d\'aide ?');
-define('_OXYGEN_HELP_DESC_3', 'Si vous avez besoin de plus d\'aide et d\'informations pour utiliser XOOPS, vous pouvez utiliser <a href="modules/system/help.php">Pages d\'aide</a> dans le module système ou utilisez <a href="http://www.xoops.org/modules/xoopspartners/" rel="external">Sites XOOPS de support locaux</a>.<hr /><p>Pour obtenir des informations les plus récentes sur XOOPS, visitez <a href="https://www.monxoops.fr/" rel="external">www.monxoops.fr</a>.</p>');
+define('_OXYGEN_HELP_DESC_3', 'Si vous avez besoin de plus d\'aide et d\'informations pour utiliser XOOPS, vous pouvez utiliser <a href="modules/system/help.php">Pages d\'aide</a> dans le module système ou utilisez <a href="https://www.xoops.org/modules/xoopspartners/" rel="external">Sites XOOPS de support locaux</a>.<hr /><p>Pour obtenir des informations les plus récentes sur XOOPS, visitez <a href="https://www.monxoops.fr/" rel="external">www.monxoops.fr</a>.</p>');
