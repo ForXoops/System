@@ -117,10 +117,10 @@ switch ($op) {
                     xoops_error($obj->getHtmlErrors());
                 }
             } else {
-                xoops_confirm(array(
+                xoops_confirm([
                                   'ok' => 1,
                                   'bid' => $bid,
-                                  'op' => 'banner_delete'), 'admin.php?fct=banners', sprintf(_AM_SYSTEM_BANNERS_SUREDELE));
+                                  'op' => 'banner_delete'], 'admin.php?fct=banners', sprintf(_AM_SYSTEM_BANNERS_SUREDELE));
             }
         } else {
             redirect_header('admin.php?fct=banners', 1, _AM_SYSTEM_DBERROR);
@@ -145,10 +145,10 @@ switch ($op) {
                     xoops_error($obj->getHtmlErrors());
                 }
             } else {
-                xoops_confirm(array(
+                xoops_confirm([
                                   'ok' => 1,
                                   'bid' => $bid,
-                                  'op' => 'banner_finish_delete'), 'admin.php?fct=banners', sprintf(_AM_SYSTEM_BANNERS_SUREDELE));
+                                  'op' => 'banner_finish_delete'], 'admin.php?fct=banners', sprintf(_AM_SYSTEM_BANNERS_SUREDELE));
             }
         } else {
             redirect_header('admin.php?fct=banners', 1, _AM_SYSTEM_DBERROR);
@@ -223,10 +223,10 @@ switch ($op) {
                     xoops_error($obj->getHtmlErrors());
                 }
             } else {
-                xoops_confirm(array(
+                xoops_confirm([
                                   'ok' => 1,
                                   'cid' => $cid,
-                                  'op' => 'banner_client_delete'), 'admin.php?fct=banners', _AM_SYSTEM_BANNERS_SUREDELBNR);
+                                  'op' => 'banner_client_delete'], 'admin.php?fct=banners', _AM_SYSTEM_BANNERS_SUREDELBNR);
             }
         } else {
             redirect_header('admin.php?fct=banners', 1, _AM_SYSTEM_DBERROR);
@@ -306,12 +306,12 @@ switch ($op) {
                 $img = '';
                 if ($htmlbanner) {
                     if ($htmlcode){
-                        $img .= html_entity_decode($htmlcode);
+                        $img .= html_entity_decode((string) $htmlcode);
                     } else {
                         $img .= ' <iframe src=' . $imageurl . ' border="0" scrolling="no" allowtransparency="true" width="480px" height="60px" style="border:0" alt=""> </iframe>';
                     }
                 } else {
-                    if (strtolower(substr($imageurl, strrpos($imageurl, '.'))) === '.swf') {
+                    if (strtolower(substr((string) $imageurl, strrpos((string) $imageurl, '.'))) === '.swf') {
                         $img .= "<object classid=\"clsid:D27CDB6E-AE6D-11cf-96B8-444553540000\" codebase=\"http://download.macromedia.com/pub/shockwave/cabs/flash/ swflash.cab#version=6,0,40,0\" width=\"468\" height=\"60\">";
                         $img .= "<param name=movie value=\"$imageurl\">";
                         $img .= '<param name=quality value=high>';

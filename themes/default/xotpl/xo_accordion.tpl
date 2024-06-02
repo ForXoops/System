@@ -11,7 +11,11 @@
             </tr>
             <tr>
                 <td><{$smarty.const._OXYGEN_VERSION_PHP}></td>
-                <td><{$lang_php_vesion}></td>
+                <td><{$lang_php_version}></td>
+            </tr>
+            <tr>
+                <td><{$smarty.const._OXYGEN_VERSION_SMARTY}></td>
+                <td><{$lang_smarty_version}></td>
             </tr>
             <tr>
                 <td><{$smarty.const._OXYGEN_VERSION_MYSQL}></td>
@@ -73,6 +77,19 @@
                 <td>upload_max_filesize</td>
                 <td><{$upload_max_filesize}></td>
             </tr>
+        </table>
+    </div>
+
+    <h5><{$smarty.const._OXYGEN_COMPOSER_PACKAGES}></h5>
+
+    <div class="pane">
+        <table>
+            <{foreach from=$composerPackages item=package}>
+            <tr>
+                <td><{$package.name}></td>
+                <td><{$package.version}></td>
+            </tr>
+            <{/foreach}>
         </table>
     </div>
 

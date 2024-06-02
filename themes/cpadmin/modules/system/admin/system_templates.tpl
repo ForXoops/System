@@ -1,6 +1,6 @@
 <{include file="db:system_header.tpl"}>
 
-<{if $index}>
+<{if !empty($index)}>
     <br class="clear"/>
     <div class="spacer">
         <table class="outer ui-corner-all" cellspacing="1">

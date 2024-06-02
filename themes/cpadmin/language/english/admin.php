@@ -23,10 +23,11 @@
 \define('_CPADMIN_VERSION_XOOPS', 'XOOPS Version');
 \define('_CPADMIN_VERSION_PHP', 'PHP Version');
 \define('_CPADMIN_VERSION_MYSQL', 'MySQL Version');
+\define('_CPADMIN_VERSION_SMARTY', 'Smarty Version');
 \define('_CPADMIN_SERVER_API', 'Server API');
 \define('_CPADMIN_OS', 'OS');
 \define('_CPADMIN_ABOUT', 'About XOOPS');
-\define('_CPADMIN_ABOUT_TEXT', 'Read the <a href="http://www.xoops.org/modules/wfchannel/" rel="external">All about XOOPS</a> page for more details.');
+\define('_CPADMIN_ABOUT_TEXT', 'Read the <a href="https://www.xoops.org/modules/wfchannel/" rel="external">All about XOOPS</a> page for more details.');
 \define('_CPADMIN_XOOPSPROJECT', 'XOOPS Project');
 \define('_CPADMIN_XOOPSCORE', 'XOOPS Core');
 \define('_CPADMIN_LOCALSUPPORT', 'Local Support');
@@ -49,7 +50,10 @@
 \define('_CPADMIN_HELP_2', 'What is the Block?');
 \define('_CPADMIN_HELP_DESC_2', 'Blocks can provide additional/specific content from the installed modules. There can be and custom blocks which can contain text, JS Code, HTML formatted text, pictures, etc. The content in these blocks may be formatted individually or can inherit formatting from the Website. (<a href="modules/system/help.php?mid=1&page=blocksadmin">more ...</a>)');
 \define('_CPADMIN_HELP_3', 'How I can find more help?');
-\define('_CPADMIN_HELP_DESC_3', 'If you need more help and information to using XOOPS you can use <a href="modules/system/help.php">Help pages </a> in system module or use <a href="http://www.xoops.org/modules/xoopspartners/" rel="external">XOOPS Local support sites </a>');
+\define('_CPADMIN_HELP_DESC_3', 'If you need more help and information to using XOOPS you can use <a href="modules/system/help.php">Help pages </a> in system module or use <a href="https://www.xoops.org/modules/xoopspartners/" rel="external">XOOPS Local support sites </a>');
 
 /* Installed modules */
 \define('_CPADMIN_INSTALLEDMODULES', 'Installed Modules');
+
+//2.5.12
+define('_CPADMIN_COMPOSER_PACKAGES', 'Composer Packages');

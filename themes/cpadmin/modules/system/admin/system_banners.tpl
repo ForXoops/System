@@ -35,7 +35,7 @@
                             <td class="txtcenter"><{$bannerdetail.impmade}></td>
                             <td class="txtcenter"><{$bannerdetail.left}></td>
                             <td class="txtcenter"><{$bannerdetail.clicks}></td>
-                            <td class="txtcenter"><{$banbannerdetailner.percent}>%</td>
+                            <td class="txtcenter"><{$banbannerdetailner.percent|default:''}>%</td>
                             <td class="txtcenter"><{$bannerdetail.name}></td>
                             <td class="xo-actions txtcenter">
                                 <a data-toggle="modal" data-target="#dialog<{$bannerdetail.bid}>">

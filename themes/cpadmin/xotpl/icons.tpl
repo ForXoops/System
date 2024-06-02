@@ -1,5 +1,5 @@
 <div class="x_toolbar">
-    <{foreach item=op from=$adminmenu}>
+    <{foreach item=op from=$adminmenu|default:null}>
     <a href="<{$op.link}>">
         <div class="x_tool float-left hoverable" data-toggle="tooltip" title="<{$op.desc}>">
             <div class="x_toolicon">

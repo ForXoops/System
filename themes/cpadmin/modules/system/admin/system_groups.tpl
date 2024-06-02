@@ -39,7 +39,7 @@
                         <a href="admin.php?fct=groups&amp;op=groups_edit&amp;groups_id=<{$groupdetail.groups_id}>" data-toggle="tooltip"
                             title="<{$smarty.const._AM_SYSTEM_GROUPS_EDIT}>">
                             <img src="<{xoAdminIcons 'edit.png'}>" alt="<{$smarty.const._AM_SYSTEM_GROUPS_EDIT}>"/></a>
-                        <{if $groupdetail.delete|default:false}>
+                        <{if !empty($groupdetail.delete)}>
                             <a href="admin.php?fct=groups&amp;op=groups_delete&amp;groups_id=<{$groupdetail.groups_id}>" data-toggle="tooltip"
                                 title="<{$smarty.const._AM_SYSTEM_GROUPS_DELETE}>">
                                 <img src="<{xoAdminIcons 'delete.png'}>" alt="<{$smarty.const._AM_SYSTEM_GROUPS_DELETE}>"/></a>

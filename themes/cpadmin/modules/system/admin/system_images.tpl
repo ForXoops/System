@@ -33,14 +33,14 @@
 <div class="card">
     <div class="card-header">
         <div class="card-tools">
-        <{if $cat_img || $listimg}>
+        <{if !empty($cat_img) || !empty($listimg)}>
             <button id="xo-addimg-btn" class="btn btn-sm btn-secondary" onclick="xo_toggle('div#xo-images-add');"
                     title="<{$smarty.const._AM_SYSTEM_IMAGES_ADDIMG}>">
                 <i class="fa fa-plus-circle ic-w mr-1" ></i>
                 <{$smarty.const._AM_SYSTEM_IMAGES_ADDIMG}>
             </button>
         <{/if}>
-        <{if !$edit_form && !$listimg && !$multiupload}>
+        <{if empty($edit_form) && empty($listimg) && empty($multiupload)}>
             <button id="xo-addcat-btn" class="btn btn-sm btn-secondary" onclick="xo_toggle('div#xo-category-add');"
                     title="<{$smarty.const._AM_SYSTEM_IMAGES_ADDCAT}>">
                 <i class="fa fa-plus-circle ic-w mr-1" ></i><{$smarty.const._AM_SYSTEM_IMAGES_ADDCAT}>
@@ -76,9 +76,9 @@
                     <td class="xo-actions"><img id="loading_cat<{$cat.id}>" src="./images/spinner.gif" style="display:none;"
                                                 alt="<{$smarty.const._AM_SYSTEM_LOADING}>"/><img class="cursorpointer" id="cat<{$cat.id}>" data-toggle="tooltip"
                                                                                                 onclick="system_setStatus( { fct: 'images', op: 'display_cat', imgcat_id: <{$cat.id}> }, 'cat<{$cat.id}>', 'admin.php' )"
-                                                                                                src="<{if $cat.display}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
+                                                                                                src="<{if !empty($cat.display)}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
                                                                                                 alt=""
-                                                                                                title="<{if $cat.display}><{$smarty.const._AM_SYSTEM_IMAGES_OFF}><{else}><{$smarty.const._AM_SYSTEM_IMAGES_ON}><{/if}>"/>
+                                                                                                title="<{if !empty($cat.display)}><{$smarty.const._AM_SYSTEM_IMAGES_OFF}><{else}><{$smarty.const._AM_SYSTEM_IMAGES_ON}><{/if}>"/>
                     </td>
                     <td class="xo-actions txtcenter">
                         <a href="admin.php?fct=images&amp;op=listimg&amp;imgcat_id=<{$cat.id}>" data-toggle="tooltip" title="<{$smarty.const._AM_SYSTEM_IMAGES_VIEW}>">
@@ -114,14 +114,14 @@
 <{if !empty($images)}>
 <div class="row mb-2">
     <div class="col">
-    <{if $listimg}>
+    <{if !empty($listimg)}>
         <button id="xo-addimg-btn" class="btn btn-sm btn-secondary" onclick="xo_toggle('div#xo-images-add');"
                 title="<{$smarty.const._AM_SYSTEM_IMAGES_ADDIMG}>">
             <i class="fa fa-plus-circle ic-w mr-1" ></i>
             <{$smarty.const._AM_SYSTEM_IMAGES_ADDIMG}>
         </button>
     <{/if}>
-    <{if $listimg}>
+    <{if !empty($listimg)}>
         <button id="xo-addavatar-btn" class="btn btn-sm btn-secondary" onclick='location="admin.php?fct=images&amp;op=multiupload&amp;imgcat_id=<{$imgcat_id}>"'
                 title="<{$smarty.const._AM_SYSTEM_IMAGES_MULTIUPLOAD}>">
             <i class="fa fa-plus-circle ic-w mr-1" ></i>
@@ -144,7 +144,7 @@
                         <img id="loading_img<{$img.image_id}>" src="./images/spinner.gif" style="display:none;"
                              alt="<{$smarty.const._AM_SYSTEM_LOADING}>"/><img class="cursorpointer tooltip" id="img<{$img.image_id}>"
                                                                               onclick="system_setStatus( { fct: 'images', op: 'display_img', image_id: <{$img.image_id}> }, 'img<{$img.image_id}>', 'admin.php' )"
-                                                                              src="<{if $img.image_display}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
+                                                                              src="<{if !empty($img.image_display)}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
                                                                               alt="<{$smarty.const._IMGDISPLAY}>" title="<{$smarty.const._IMGDISPLAY}>"/>
                         <{if empty($db_store)}>
                         <a class="lightbox tooltip" href="<{$xoops_upload_url}>/<{$img.image_name}>" title="<{$smarty.const._PREVIEW}>">
@@ -184,14 +184,14 @@
 <{else}>
 <div class="row mb-2">
     <div class="col">
-    <{if $listimg}>
+    <{if !empty($listimg)}>
         <button id="xo-addimg-btn" class="btn btn-sm btn-secondary" onclick="xo_toggle('div#xo-images-add');"
                 title="<{$smarty.const._AM_SYSTEM_IMAGES_ADDIMG}>">
             <i class="fa fa-plus-circle ic-w mr-1" ></i>
             <{$smarty.const._AM_SYSTEM_IMAGES_ADDIMG}>
         </button>
     <{/if}>
-    <{if $listimg}>
+    <{if !empty($listimg)}>
         <button id="xo-addavatar-btn" class="btn btn-sm btn-secondary" onclick='location="admin.php?fct=images&amp;op=multiupload&amp;imgcat_id=<{$imgcat_id}>"'
                 title="<{$smarty.const._AM_SYSTEM_IMAGES_MULTIUPLOAD}>">
             <i class="fa fa-plus-circle ic-w mr-1" ></i>

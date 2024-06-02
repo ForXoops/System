@@ -1,13 +1,13 @@
 
-<{if $breadcrumb}>
+<{if !empty($breadcrumb)}>
 <{include file="db:system_header.tpl"}>
 <{/if}>
-<{if $menu}>
+<{if !empty($menu)}>
 <div class="card">
     <div class="card-body">
         <!--Preferences-->
         <div class="x_toolbar">
-            <{foreach item=preference from=$preferences}>
+            <{foreach item=preference from=$preferences|default:null}>
             <a href="admin.php?fct=preferences&amp;op=show&amp;confcat_id=<{$preference.id}>" title="<{$preference.name}>">
                 <div class="x_tool float-left hoverable" data-toggle="tooltip" title="<{$preference.name}>">
                     <div class="x_toolicon">

@@ -1,10 +1,10 @@
 <div class="card card-default color-palette-box">
 <div class="card-header">
-        <{foreach item=breadcrumb from=$xo_sys_breadcrumb}>
-        <{if $breadcrumb.home}>
+        <{foreach item=breadcrumb from=$xo_sys_breadcrumb|default:null}>
+        <{if !empty($breadcrumb.home)}>
         <a class="text-dark" href="<{$breadcrumb.link}>" data-toggle="tooltip" title="<{$breadcrumb.title}>"><i class="fas fa-home"></i></a>
         <{else}>
-            <{if $breadcrumb.link}>
+            <{if !empty($breadcrumb.link)}>
             &nbsp;\&nbsp;<a href="<{$breadcrumb.link}>" data-toggle="tooltip" title="<{$breadcrumb.title}>"><{$breadcrumb.title}></a>
             <{else}>
             &nbsp;\&nbsp;<span><{$breadcrumb.title}></span>
@@ -17,7 +17,7 @@
     </div>
 </div>
 </div>
-<{if $help_content}>
+<{if !empty($help_content)}>
 
     <div class="row mb-2">
         <div class="col">
@@ -28,8 +28,7 @@
     </div>
 
 <{/if}>
-<{if $xo_sys_tips}>
-
+<{if !empty($xo_sys_tips)}>
     <div class="row">
         <div class="col">
             <div class="callout callout-success clearfix">

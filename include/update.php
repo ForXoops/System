@@ -57,8 +57,8 @@ function update_system_v211($module)
             \sprintf(_DB_QUERY_ERROR, $sql) . $xoopsDB->error(), E_USER_ERROR
         );
 }
-    $tplids = array();
-    while (false !== (list($tplid) = $xoopsDB->fetchRow($result))) {
+    $tplids = [];
+    while (false !== ([$tplid] = $xoopsDB->fetchRow($result))) {
         $tplids[] = $tplid;
     }
     if (count($tplids) > 0) {
@@ -77,7 +77,7 @@ function update_system_v211($module)
 
         return false;
     }
-    $ret = array();
+    $ret = [];
     while (false !== ($myrow = $xoopsDB->fetchArray($result))) {
         $ret[] = $myrow;
     }

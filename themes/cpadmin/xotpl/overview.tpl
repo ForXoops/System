@@ -16,7 +16,11 @@
                     </tr>
                     <tr>
                         <td><{$smarty.const._CPADMIN_VERSION_PHP}></td>
-                        <td><{$lang_php_vesion}></td>
+                        <td><{$lang_php_version}></td>
+                    </tr>
+                    <tr>
+                        <td><{$smarty.const._CPADMIN_VERSION_SMARTY}></td>
+                        <td><{$lang_smarty_version}></td>
                     </tr>
                     <tr>
                         <td><{$smarty.const._CPADMIN_VERSION_MYSQL}></td>
@@ -66,6 +70,31 @@
             </div>
         </div>
     </div>
+
+
+    <div class="card mb-0">
+        <div class="card-header" id="overview">
+            <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseComposer" aria-expanded="true" aria-controls="collapseComposer">
+                    <i class="fas fa-handshake-o ic-w mr-1"></i><{$smarty.const._CPADMIN_COMPOSER_PACKAGES}>
+                </button>
+            </h2>
+        </div>
+        <div id="collapseComposer" class="collapse" aria-labelledby="collapseComposer" data-parent="#accordion">
+            <div class="card-body">
+                <table>
+                    <{foreach from=$composerPackages item=package}>
+                        <tr>
+                            <td><{$package.name}></td>
+                            <td><{$package.version}></td>
+                        </tr>
+                    <{/foreach}>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
     <div class="card mb-0">
         <div class="card-header" id="overview">
             <h2 class="mb-0">

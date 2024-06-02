@@ -35,9 +35,9 @@
                     <img id="loading_sml<{$smiley.smilies_id}>" src="images/spinner.gif" style="display:none;" title="<{$smarty.const._AM_SYSTEM_LOADING}>"
                          alt="<{$smarty.const._AM_SYSTEM_LOADING}>"/><img class="cursorpointer" id="sml<{$smiley.smilies_id}>" data-toggle="tooltip"
                                                                           onclick="system_setStatus( { fct: 'smilies', op: 'smilies_update_display', smilies_id: <{$smiley.smilies_id}> }, 'sml<{$smiley.smilies_id}>', 'admin.php' )"
-                                                                          src="<{if $smiley.display}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
-                                                                          alt="<{if $smiley.display}><{$smarty.const._AM_SYSTEM_SMILIES_OFF}><{else}><{$smarty.const._AM_SYSTEM_SMILIES_ON}><{/if}>"
-                                                                          title="<{if $smiley.display}><{$smarty.const._AM_SYSTEM_SMILIES_OFF}><{else}><{$smarty.const._AM_SYSTEM_SMILIES_ON}><{/if}>"/>
+                                                                          src="<{if !empty($smiley.display)}><{xoAdminIcons 'success.png'}><{else}><{xoAdminIcons 'cancel.png'}><{/if}>"
+                                                                          alt="<{if !empty($smiley.display)}><{$smarty.const._AM_SYSTEM_SMILIES_OFF}><{else}><{$smarty.const._AM_SYSTEM_SMILIES_ON}><{/if}>"
+                                                                          title="<{if !empty($smiley.display)}><{$smarty.const._AM_SYSTEM_SMILIES_OFF}><{else}><{$smarty.const._AM_SYSTEM_SMILIES_ON}><{/if}>"/>
                 </td>
                 <td class="xo-actions txtcenter width10">
                     <a class="" href="admin.php?fct=smilies&amp;op=edit_smilie&amp;smilies_id=<{$smiley.smilies_id}>" data-toggle="tooltip"

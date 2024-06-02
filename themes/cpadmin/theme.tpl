@@ -73,14 +73,14 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-		<{if $xoops_name}>
+		<{if !empty($xoops_name)}>
            <img src="<{$xoops_avatar}>" class="img-circle elevation-2" alt="User Image" title="<{$xoops_name}>">		
 		  <{else}>
            <img src="<{$xoops_avatar}>" class="img-circle elevation-2" alt="User Image" title="<{$xoops_uname}>">
 		<{/if}>	
         </div>
         <div class="info">
-		<{if $xoops_name}>
+		<{if !empty($xoops_name)}>
           <a href="<{xoAppUrl 'user.php'}>" class="d-block text-wrap" rel="external">
             <{$xoops_name}>
           </a>				
@@ -120,7 +120,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <{foreach item=op from=$adminmenu}>
+              <{foreach item=op from=$adminmenu|default:null}>
                   <li class="nav-item">
                     <a href="<{$op.link}>" class="nav-link">
                       <i class="<{$op.icon}>"></i>
@@ -167,7 +167,7 @@
             <{/foreach}>  
           </li>
           <li class="nav-item">
-            <{foreach item=module from=$modules}>
+            <{foreach item=module from=$modules|default:null}>
             <li class="nav-item">
               <a href="<{xoAppUrl '#'}>" class="nav-link">
                 <i class="nav-icon <{$module.icon}>"></i>
@@ -176,8 +176,8 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
-                <{foreach item=sub from=$module.menu}>
-                    <{if $sub.dir != 'system'}>
+                <{foreach item=sub from=$module.menu|default:null}>
+                    <{if isset($sub.dir) && $sub.dir != 'system'}>
                         <li class="nav-item">
                           <a href="#" class="nav-link">
                             <i class="fa fa-cog"></i>
@@ -186,7 +186,7 @@
                             </p>
                           </a>
                           <ul class="nav nav-treeview" style="display: none;">
-                            <{foreach item=optn from=$sub.options}>
+                            <{foreach item=optn from=$sub.options|default:null}>
                                 <li class="nav-item">
                                   <a href="<{$sub.url}><{$optn.link}>" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
@@ -212,16 +212,16 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <div class="content-header">
-      <{if $xoops_contents}>
+      <{if !empty($xoops_contents)}>
       <div id="xo-content" class="container-fluid">
         <{*Display Admin menu*}>
-          <{if $xo_system_menu}>
+          <{if !empty($xo_system_menu)}>
               <{$xo_system_menu}>
               <{/if}>
                 <{$xoops_contents}>
       </div>
       <{/if}>
-      <{if $dashboard}>
+      <{if !empty($dashboard)}>
       <div class="container-fluid">
         <div class="row">
           <div class="col">
@@ -250,8 +250,8 @@
               </div>
               <div class="card-body">
                 <div class="x_toolbar">
-                  <{foreach item=module from=$modules}>
-                  <{foreach item=mod from=$module.menu}>
+                  <{foreach item=module from=$modules|default:null}>
+                  <{foreach item=mod from=$module.menu|default:null}>
                   <a href="<{$mod.link}>">
                     <div class="x_tool float-left hoverable" data-toggle="tooltip" title="<{$mod.title}>">
                       <div class="x_toolicon">

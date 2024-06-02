@@ -38,11 +38,11 @@
                 <tbody>
                 <{foreach item=user from=$users|default:null}>
                     <tr class="<{cycle values='even,odd'}> alignmiddle">
-                        <td class="txtcenter"><{if $user.checkbox_user}><input type='checkbox' name='memberslist_id[]' id='memberslist_id[]'
+                        <td class="txtcenter"><{if !empty($user.checkbox_user)}><input type='checkbox' name='memberslist_id[]' id='memberslist_id[]'
                                                                                 value='<{$user.uid}>'/><{/if}>
                         </td>
                         <td class="txtcenter"><img class="xo-imgmini" src="<{$user.group}>" alt=""/></td>
-                        <td class="txtcenter"><a title="<{$users.uname}>" href="<{$xoops_url}>/userinfo.php?uid=<{$user.uid}>"><{$user.uname}></a></td>
+                        <td class="txtcenter"><a title="<{$user.uname}>" href="<{$xoops_url}>/userinfo.php?uid=<{$user.uid}>"><{$user.uname}></a></td>
                         <td class="txtcenter"><{$user.name}></td>
                         <td class="txtcenter"><{$user.email}></td>
                         <td class="txtcenter"><{$user.reg_date}></td>
@@ -53,7 +53,7 @@
                                                                                                           alt="Loading" width="12px"/></div>
                         </td>
                         <td class="xo-actions txtcenter">
-                            <{if $user.user_level > 0}>
+                            <{if isset($user.user_level) && $user.user_level > 0}>
                                 <img data-toggle="tooltip" onclick="display_post('<{$user.uid}>');" src="<{xoAdminIcons 'reload.png'}>"
                                      alt="<{$smarty.const._AM_SYSTEM_USERS_SYNCHRONIZE}>" title="<{$smarty.const._AM_SYSTEM_USERS_SYNCHRONIZE}>"/>
                                 <a data-toggle="modal" data-target="#dialog<{$user.uid}>">
@@ -162,16 +162,16 @@
                                     <{if !empty($users.user_url)}>
                                         <li><span class="bold"><{$smarty.const._AM_SYSTEM_USERS_URL}></span>&nbsp;:&nbsp;<{$users.url}></li>
                                     <{/if}>
-                                    <{if $users.user_icq}>
+                                    <{if !empty($users.user_icq)}>
                                         <li><span class="bold"><{$smarty.const._AM_SYSTEM_USERS_ICQ}></span>&nbsp;:&nbsp;<{$users.user_icq}></li>
                                     <{/if}>
-                                    <{if $users.user_aim}>
+                                    <{if !empty($users.user_aim)}>
                                         <li><span class="bold"><{$smarty.const._AM_SYSTEM_USERS_AIM}></span>&nbsp;:&nbsp;<{$users.user_aim}></li>
                                     <{/if}>
-                                    <{if $users.user_yim}>
+                                    <{if !empty($users.user_yim)}>
                                         <li><span class="bold"><{$smarty.const._AM_SYSTEM_USERS_YIM}></span>&nbsp;:&nbsp;<{$users.user_yim}></li>
                                     <{/if}>
-                                    <{if $users.user_msnm}>
+                                    <{if !empty($users.user_msnm)}>
                                         <li><span class="bold"><{$smarty.const._AM_SYSTEM_USERS_MSNM}></span>&nbsp;:&nbsp;<{$users.user_msnm}></li>
                                     <{/if}>
                                 </ul>

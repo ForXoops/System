@@ -26,8 +26,8 @@ class SystemMenuHandler
      *
      * @var string
      */
-    public $_menutop  = array();
-    public $_menutabs = array();
+    public $_menutop  = [];
+    public $_menutabs = [];
     public $_obj;
     public $_header;
     public $_subheader;
@@ -163,31 +163,31 @@ class SystemMenuHandler
      *
      * @return string
      */
-public function render($currentoption = 1, $display = true)
-{
-    global $modversion;
-    $_dirname = $this->_obj->getVar('dirname');
-    $i        = 0;
+    public function render($currentoption = 1, $display = true)
+    {
+        global $modversion;
+        $_dirname = $this->_obj->getVar('dirname');
+        $i        = 0;
 
-    /**
-     * Select current menu tab, sets id names for menu tabs
-     */
-    $j = 0;
-    foreach ($this->_menutabs as $k => $menus) {
-        if ($j == $currentoption) {
-            $breadcrumb = $menus;
+        /**
+         * Select current menu tab, sets id names for menu tabs
+         */
+        $j=0;
+        foreach ($this->_menutabs as $k => $menus) {
+            if ($j == $currentoption) {
+                $breadcrumb = $menus;
+            }
+            $menuItems[] = 'modmenu_' . $j++;
         }
-        $menuItems[] = 'modmenu_' . $j++;
-    }
 
     $menuItems[$currentoption] = 'active';
     $menu = "<div class='container-fluid p-3'>";
     $menu .= "<div class='row'>";
     $menu .= "<div class='col-md-8 text-left' style='font-size: 10px; color: #2F5376; line-height: 18px;'>";
-    foreach ($this->_menutop as $k => $v) {
+        foreach ($this->_menutop as $k => $v) {
         $menu .= "<a href=\"$k\" class='m-2'>$v</a>|";
-    }
-    $menu = substr($menu, 0, -1);
+        }
+        $menu = substr($menu, 0, -1);
 
     $menu .= "</div>";
     $menu .= "<div class='col-md-4 text-right'><strong>" . $this->_obj->getVar('name') . "</strong> : " . $breadcrumb . "</div>";
@@ -196,43 +196,42 @@ public function render($currentoption = 1, $display = true)
     $menu .= "<div class='container-fluid'>";
     $menu .= "<ul class='nav nav-tabs'>";
 
-    foreach ($this->_menutabs as $k => $v) {
+        foreach ($this->_menutabs as $k => $v) {
         $activeClass = ($i == $currentoption) ? 'active' : '';
         $menu .= "<li class='nav-item'>";
         $menu .= "<a class='nav-link $activeClass' href='" . XOOPS_URL . "/modules/" . $this->_obj->getVar('dirname') . "/$k'>$v</a>";
         $menu .= "</li>";
-        ++$i;
-    }
+            ++$i;
+        }
 
     $menu .= "</ul>";
     $menu .= "</div>";
 
-    if ($this->_header) {
-        $menu .= "<h4 class='admin_header'>";
-        if (isset($modversion['name'])) {
-            if ($modversion['image'] && $this->_obj->getVar('mid') == 1) {
-                $system_image = XOOPS_URL . '/modules/system/images/system/' . $modversion['image'];
-            } else {
-                $system_image = XOOPS_URL . '/modules/' . $_dirname . '/images/' . $modversion['image'];
-            }
+        if ($this->_header) {
+            $menu .= "<h4 class='admin_header'>";
+            if (isset($modversion['name'])) {
+                if ($modversion['image'] && $this->_obj->getVar('mid') == 1) {
+                    $system_image = XOOPS_URL . '/modules/system/images/system/' . $modversion['image'];
+                } else {
+                    $system_image = XOOPS_URL . '/modules/' . $_dirname . '/images/' . $modversion['image'];
+                }
             $menu .= "<img src='$system_image' class='align-middle mr-2' height='32' width='32' alt='' />";
-            $menu .= ' ' . $modversion['name'] . "</h4>\n";
-        } else {
-            $menu .= ' ' . $this->_header . "</h4>\n";
+                $menu .= ' ' . $modversion['name'] . "</h4>\n";
+            } else {
+                $menu .= ' ' . $this->_header . "</h4>\n";
+            }
         }
-    }
-    if ($this->_subheader) {
-        $menu .= "<div class='admin_subheader'>" . $this->_subheader . "</div>\n";
-    }
+        if ($this->_subheader) {
+            $menu .= "<div class='admin_subheader'>" . $this->_subheader . "</div>\n";
+        }
     $menu .= '<div class="clearfix">&nbsp;</div>';
-    unset($this->_obj);
-    if ($display === true) {
-        echo $menu;
-    } else {
-        return $menu;
+        unset($this->_obj);
+        if ($display === true) {
+            echo $menu;
+        } else {
+            return $menu;
+        }
+
+        return null;
     }
-
-    return null;
-}
-
 }
