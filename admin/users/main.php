@@ -18,6 +18,7 @@
  */
 /** @var XoopsUser $xoopsUser */
 /** @var XoopsModule $xoopsModule */
+
 use Xmf\Request;
 
 // Check users rights
@@ -768,7 +769,8 @@ switch ($op) {
 
             $start = Request::getInt('start');
                 $groups = [];
-            if (Request::hasVar('selgroups')) {
+            $selgroups = [];
+            if (Request::hasVar('selgroups') && $_REQUEST['selgroups'] != '') {
                 $selgroups = Request::getArray('selgroups', []); // Default to an empty array if 'selgroups' is not set
                 if (empty($selgroups)) {
                     // If 'selgroups' is an empty array, try to get it as an integer

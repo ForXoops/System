@@ -66,6 +66,8 @@ class XoopsGuiDark extends XoopsSystemGui
         global $xoopsConfig, $xoopsUser, $xoopsModule, $xoTheme, $xoopsTpl, $xoopsDB;
         $tpl =& $this->template;
 
+        include_once dirname(__DIR__) . '/ComposerInfo.php';
+
         // Determine if information box must be shown
         $currentScript = str_replace(XOOPS_ROOT_PATH . '/', '', (string) $_SERVER['SCRIPT_FILENAME']);
 
@@ -127,21 +129,7 @@ class XoopsGuiDark extends XoopsSystemGui
 
         // COMPOSER PACKAGES VERSION INFO *******************
 
-        try {
-            // Define the path to the composer.lock file
-            $composerLockPath = XOOPS_ROOT_PATH . '/class/libraries/composer.lock';
-            // Get the packages data from composer.lock file
-            $packages = $this->getComposerData($composerLockPath);
-            // Extract package name and version
-            $composerPackages = $this->extractPackages($packages);
-            // Assign the $composerPackages array to the Smarty template
-            $tpl->assign('composerPackages', $composerPackages);
-        } catch (Exception $e) {
-            // Handle any exception and log the error using XOOPS Logger
-            global $xoopsLogger;
-            $xoopsLogger->handleError(E_USER_ERROR, $e->getMessage(), __FILE__, __LINE__);
-            echo "An error occurred. Please try again later.";
-        }
+        ComposerInfo::getComposerInfo($tpl);
 
         // ADD MENU *****************************************
         $menu                = [];
