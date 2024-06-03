@@ -149,11 +149,12 @@
                         <{$op.title}><{if !empty($op.options) && $op.options != 0}><i class="fas fa-angle-left right"></i><{/if}>
                       </p>
                     </a>
+                  <{if empty($op.options) && $op.options == 0}></li><{/if}>
                     <ul class="nav nav-treeview">
                     <{foreach item=sub from=$op.options|default:null}>
                       <li class="nav-item">
                         <a href="<{$sub.link}>" class="nav-link">
-                          <i class="<{$sub.icon}>"></i>
+                          <i class="nav-icon <{$sub.icon}>"></i>
                           <p>
                             <{$sub.title}>
                           </p>
@@ -161,7 +162,7 @@
                       </li>
                     <{/foreach}>
                     </ul>
-                  </li>
+                  <{if !empty($op.options) && $op.options != 0}></li><{/if}>
                 <{/foreach}>
             </ul>
             <{/foreach}>  
