@@ -109,18 +109,6 @@ input[type=submit], input[type=reset], input[type=button], .xo-formbuttons, .for
     padding: 0.2rem 0.2rem 0 0.2rem;
 }
 
-div.rmmenuicon a {
-    display: block;
-    float: left;
-    text-align: center;
-    padding: 15px 0;
-    height: 110px !important;
-    width: 110px !important;
-    text-decoration: none;
-    background: #fff;
-    border: 1px solid #E6E9ED;
-}
-
 /* Table */
 .outer {
     
@@ -131,10 +119,96 @@ div.rmmenuicon a {
 #xo-logger-output{
     padding: 1em !important
 }
-
+/* Fix tooltip class */
 .tooltip {
     position: inherit;
     opacity: 1;
     display: inline;
 }
+/* jGrowl redirection */
+div.jGrowl {
+    padding: 1em;
+    z-index: 9999;
+}
 
+/* JGrowl Box position in the page */
+body > div.jGrowl {
+    position: fixed;
+}
+
+body > div.jGrowl.top-right {
+    right: 25%;
+    left: 25%;
+    top: 2px;
+}
+
+body > div.jGrowl.bottom-left {
+    left: 0;
+    bottom: 0;
+}
+
+body > div.jGrowl.bottom-right {
+    right: 0;
+    bottom: 0;
+}
+
+body > div.jGrowl.center {
+    top: 0;
+    width: 50%;
+    left: 25%;
+}
+
+body > div.jGrowl.top-left {
+    left: 0;
+    top: 0;
+}
+
+/* jGrowl Box style */
+div.center div.jGrowl-notification, div.center div.jGrowl-closer {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer {
+    background-color: #eeeded;
+    color: #333;
+    width: 100%;
+    padding: .5em;
+    margin-top: .5em;
+    margin-bottom: .5em;
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    border: 1px solid #666;
+    display: none;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+div.jGrowl div.jGrowl-notification {
+    min-height: 40px;
+}
+
+div.jGrowl div.jGrowl-notification div.jGrowl-header {
+    font-weight: bold;
+    font-size: 10px;
+}
+
+/* jGrowl Close button */
+div.jGrowl div.jGrowl-notification button.jGrowl-close {
+    float: right;
+    font-weight: bold;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+div.jGrowl div.jGrowl-closer {
+    height: 15px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+}
