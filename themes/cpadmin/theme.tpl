@@ -146,10 +146,10 @@
                     <a href="<{$op.link}>" class="nav-link">
                       <i class="nav-icon <{$op.icon}>"></i>
                       <p>
-                        <{$op.title}><{if !empty($op.options) && $op.options != 0}><i class="fas fa-angle-left right"></i><{/if}>
+                        <{$op.title}><{if isset($op.options) && $op.options != 0}><i class="fas fa-angle-left right"></i><{/if}>
                       </p>
                     </a>
-                  <{if empty($op.options) && $op.options == 0}></li><{/if}>
+                  <{if isset($op.options) && $op.options != 0}></li><{/if}>
                     <ul class="nav nav-treeview">
                     <{foreach item=sub from=$op.options|default:null}>
                       <li class="nav-item">
@@ -162,7 +162,7 @@
                       </li>
                     <{/foreach}>
                     </ul>
-                  <{if !empty($op.options) && $op.options != 0}></li><{/if}>
+                  <{if isset($op.options) && $op.options != 0}></li><{/if}>
                 <{/foreach}>
             </ul>
             <{/foreach}>  
