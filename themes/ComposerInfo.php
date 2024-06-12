@@ -1,4 +1,5 @@
 <?php
+
 header('HTTP/1.0 404 Not Found');
 
 class ComposerInfo
@@ -11,9 +12,9 @@ class ComposerInfo
             // Define the path to the composer.lock file
             $composerLockPath = XOOPS_ROOT_PATH . '/class/libraries/composer';
             // Get the packages data from composer.lock file
-            $packages = self::getComposerData($composerLockPath);
+            $packages = self::readComposerLockFile($composerLockPath);
             // Extract package name and version
-            $composerPackages = self::extractPackages($packages);
+            $composerPackages = self::extractPackageNamesAndVersions($packages);
             // Assign the $composerPackages array to the Smarty template
             $xoopsTpl->assign('composerPackages', $composerPackages);
         } catch (Exception $e) {
@@ -24,21 +25,20 @@ class ComposerInfo
     }
 
     // Function to read and parse composer.lock file
-    private static function getComposerData(string $composerLockPath): array
+    private static function readComposerLockFile(string $composerLockPath): array
     {
-        $composerkLock = $composerLockPath . '.lock';
-        if (!file_exists($composerkLock)) {
-            $composerLockPathDist = $composerLockPath . '.dist.lock';
-            if (!file_exists($composerLockPathDist)) {
-                throw new InvalidArgumentException("File not found at: " . $composerLockPath);
+        $composerLockFile = $composerLockPath . '.lock';
+        if (!file_exists($composerLockFile)) {
+            $composerLockFile = $composerLockPath . '.dist.lock';
             }
-            $composerLockPath = $composerLockPathDist;
+        if (!file_exists($composerLockFile)) {
+            throw new InvalidArgumentException("Failed to read the file: " . $composerLockFile);
         }
 
-        $composerLockData = file_get_contents($composerLockPath);
+        $composerLockData = file_get_contents($composerLockFile);
 
         if ($composerLockData === false) {
-            throw new RuntimeException("Failed to read the file: " . $composerLockPath);
+            throw new RuntimeException("Failed to read the file: " . $composerLockFile);
         }
 
         $composerData = json_decode($composerLockData, true);
@@ -50,36 +50,15 @@ class ComposerInfo
         return $composerData['packages'] ?? [];
     }
 
-
-
     // Function to extract package name and version (using array_map for optimization)
-    private  static function extractPackages(array $packages): array
+    private static function extractPackageNamesAndVersions(array $packages): array
     {
         return array_map(
             static fn($package) => [
                 'name'    => $package['name'],
-                'version' => $package['version']
-            ], $packages
+                'version' => $package['version'],
+            ],
+            $packages,
         );
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
