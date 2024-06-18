@@ -256,7 +256,7 @@
                   <a href="<{$mod.link}>">
                     <div class="x_tool float-left hoverable" data-toggle="tooltip" title="<{$mod.title}>">
                       <div class="x_toolicon">
-                        <i class="fas fa-cog"></i>
+                        <img src="<{$mod.image}>">
                       </div>
                       <div class="x_tooltext">
                         <{$mod.title}>

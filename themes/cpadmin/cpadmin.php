@@ -327,8 +327,8 @@ class XoopsGuiCpadmin extends XoopsSystemGui
                 $modOptions      = $mod->getAdminMenu();                                        //add for sub menus
                 $rtn['options']  = $modOptions;                                             //add for sub menus
                 $rtn['icon'] = '<i class="fas fa-cog"></i>';
-                if (isset($info['icon']) && $info['icon'] !== '') {
-                    $rtn['image'] = XOOPS_URL . '/modules/' . $mod->getVar('dirname', 'n') . '/' . $info['icon'];
+                if (isset($info['image']) && $info['image'] !== '') {
+                    $rtn['image'] = XOOPS_URL . '/modules/' . $mod->getVar('dirname', 'n') . '/' . $info['image'];
                 }
                 $menu[] = $rtn;
             }
